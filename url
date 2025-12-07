@@ -23,7 +23,7 @@ baseUrl: '/Physical-AI-Humanoid-Robotics/',
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
 organizationName: 'ayeshadev283-max', // Your GitHub username
-  projectName: 'physical-ai-book', // Usually your repo name.
+  projectName: 'Physical-AI-Humanoid-Robotics', // Usually your repo name.
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
