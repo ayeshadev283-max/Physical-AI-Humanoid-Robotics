@@ -78,7 +78,7 @@ organizationName: 'ayeshadev283-max', // Your GitHub username
         logo: {
           alt: 'Book Logo',
           src: 'img/logo.svg',
-          href: '/',
+href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
         },
         items: [
           {
@@ -88,7 +88,7 @@ organizationName: 'ayeshadev283-max', // Your GitHub username
             label: 'Book',
           },
           {
-            href: 'https://github.com/your-organization/physical-ai-book',
+href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
             label: 'GitHub',
             position: 'right',
           },
