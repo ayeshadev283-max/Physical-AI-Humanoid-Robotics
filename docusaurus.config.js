@@ -5,7 +5,6 @@ const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 const math = require('remark-math');
 const katex = require('rehype-katex');
-// const citation = require('rehype-citation');
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -13,24 +12,14 @@ const config = {
   tagline: 'A Graduate-Level Technical Textbook',
   favicon: 'img/favicon.ico',
 
-  // Set the production url of your site here
-url: 'https://ayeshadev283-max.github.io',
-  // Set the /<baseUrl>/ pathname under which your site is served
-  // For GitHub pages deployment, it is often '/<projectName>/'
-  // baseUrl: '/',
-baseUrl: '/Physical-AI-Humanoid-Robotics/',
+  url: 'https://ayeshadev283-max.github.io',
+  baseUrl: '/Physical-AI-Humanoid-Robotics/',
 
-  // GitHub pages deployment config.
-  // If you aren't using GitHub pages, you don't need these.
-organizationName: 'ayeshadev283-max', // Your GitHub username
-  projectName: 'Physical-AI-Humanoid-Robotics', // Usually your repo name.
+  organizationName: 'ayeshadev283-max', // Your GitHub username
+  projectName: 'Physical-AI-Humanoid-Robotics', // Your repo name
+  deploymentBranch: 'gh-pages',
+  trailingSlash: false,
 
-  onBrokenLinks: 'throw',
-  onBrokenMarkdownLinks: 'warn',
-
-  // Even if you don't use internalization, you can use this field to set useful
-  // metadata like html lang. For example, if your site is Chinese, you may want
-  // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'en',
     locales: ['en'],
@@ -39,23 +28,19 @@ organizationName: 'ayeshadev283-max', // Your GitHub username
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           routeBasePath: '/', // Serve docs at site root
           sidebarPath: require.resolve('./sidebars.js'),
           remarkPlugins: [math],
-          rehypePlugins: [katex], // [citation, {bibliography: 'references/physical-ai-book.bib', csl: 'apa' }]],
-          // Please change this to your repo.
-          // Remove this to remove the "edit this page" links.
-          editUrl:
-  'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/',
+          rehypePlugins: [katex],
+          editUrl: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/',
         },
-        blog: false, // Disable blog for this book project
+        blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      }),
+      },
     ],
   ],
 
@@ -68,91 +53,80 @@ organizationName: 'ayeshadev283-max', // Your GitHub username
     },
   ],
 
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      // Replace with your project's social card
-      image: 'img/docusaurus-social-card.jpg',
-      navbar: {
-        title: 'Physical AI & Humanoid Robotics',
-        logo: {
-          alt: 'Book Logo',
-          src: 'img/logo.svg',
-href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
+  themeConfig: {
+    image: 'img/docusaurus-social-card.jpg',
+    navbar: {
+      title: 'Physical AI & Humanoid Robotics',
+      logo: {
+        alt: 'Book Logo',
+        src: 'img/logo.svg',
+        href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
+      },
+      items: [
+        {
+          type: 'docSidebar',
+          sidebarId: 'bookSidebar',
+          position: 'left',
+          label: 'Book',
         },
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'bookSidebar',
-            position: 'left',
-            label: 'Book',
-          },
-          {
-href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Content',
-            items: [
-              {
-                label: 'Book',
-                to: '/',
-              },
-              {
-                label: 'Bibliography',
-                to: '/references/bibliography',
-              },
-            ],
-          },
-          {
-            title: 'Resources',
-            items: [
-              {
-                label: 'Code Examples',
-                href: 'https://github.com/your-organization/physical-ai-book/tree/main/examples',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/your-organization/physical-ai-book',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Book Contributors. Content licensed under <a href="/LICENSE.content.md" target="_blank">CC BY-SA 4.0</a>. Code examples licensed under <a href="/LICENSE.code.md" target="_blank">Apache 2.0</a>. Built with Docusaurus.`,
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-        additionalLanguages: ['python', 'cpp', 'cmake', 'markup', 'yaml', 'bash', 'json'],
-      },
-      algolia: {
-        // The application ID provided by Algolia
-        appId: 'YOUR_APP_ID',
-        // Public API key: it is safe to commit it
-        apiKey: 'YOUR_SEARCH_API_KEY',
-        indexName: 'YOUR_INDEX_NAME',
-        // Optional: see doc section below
-        contextualSearch: true,
-        // Optional: Algolia search parameters
-        searchParameters: {},
-        // Optional: path for search page that enabled by default (`false` to disable it)
-        searchPagePath: 'search',
-      },
-    }),
+        {
+          href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
+          label: 'GitHub',
+          position: 'right',
+        },
+      ],
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Content',
+          items: [
+            { label: 'Book', to: '/' },
+            { label: 'Bibliography', to: '/references/bibliography' },
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {
+              label: 'Code Examples',
+              href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/examples',
+            },
+          ],
+        },
+        {
+          title: 'More',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
+            },
+          ],
+        },
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Book Contributors. Content licensed under <a href="/LICENSE.content.md" target="_blank">CC BY-SA 4.0</a>. Code examples licensed under <a href="/LICENSE.code.md" target="_blank">Apache 2.0</a>. Built with Docusaurus.`,
+    },
+    prism: {
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
+      additionalLanguages: ['python', 'cpp', 'cmake', 'markup', 'yaml', 'bash', 'json'],
+    },
+    algolia: {
+      appId: 'YOUR_APP_ID',
+      apiKey: 'YOUR_SEARCH_API_KEY',
+      indexName: 'YOUR_INDEX_NAME',
+      contextualSearch: true,
+      searchParameters: {},
+      searchPagePath: 'search',
+    },
+  },
 
   markdown: {
     mermaid: true,
+    hooks: {
+      onBrokenMarkdownLinks: 'warn', // migrated from deprecated option
+    },
   },
   themes: ['@docusaurus/theme-mermaid'],
 };
