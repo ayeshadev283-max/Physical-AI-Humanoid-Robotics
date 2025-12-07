@@ -14,14 +14,15 @@ const config = {
   favicon: 'img/favicon.ico',
 
   // Set the production url of your site here
-  url: 'https://your-username.github.io',
+url: 'https://ayeshadev283-max.github.io',
   // Set the /<baseUrl>/ pathname under which your site is served
   // For GitHub pages deployment, it is often '/<projectName>/'
-  baseUrl: '/',
+  // baseUrl: '/',
+baseUrl: '/Physical-AI-Humanoid-Robotics/',
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'your-organization', // Usually your GitHub org/user name.
+organizationName: 'ayeshadev283-max', // Your GitHub username
   projectName: 'physical-ai-book', // Usually your repo name.
 
   onBrokenLinks: 'throw',
@@ -48,7 +49,7 @@ const config = {
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
           editUrl:
-            'https://github.com/your-organization/physical-ai-book/tree/main/',
+  'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/',
         },
         blog: false, // Disable blog for this book project
         theme: {
