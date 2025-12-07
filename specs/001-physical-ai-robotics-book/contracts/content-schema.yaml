@@ -1,0 +1,50 @@
+---
+# Content Schema Validation Rules
+# Defines structure requirements for all documentation content
+
+chapter:
+  required_frontmatter:
+    - sidebar_position
+    - title
+    - description
+    - tags
+  
+  optional_frontmatter:
+    - slug
+    - keywords
+    - last_update
+
+  structure:
+    - heading_levels: "Must start with # and progress logically (no skipping levels)"
+    - learning_objectives: "Required at start of each chapter"
+    - summary: "Required at end of each chapter"
+    - exercises: "Optional but recommended"
+
+  content_requirements:
+    - min_words: 1500
+    - max_words: 5000
+    - diagrams: "At least 1 diagram per major section"
+    - code_examples: "Must be syntax-validated and runnable"
+    - citations: "Minimum 3 peer-reviewed sources per chapter"
+
+appendix:
+  required_frontmatter:
+    - sidebar_position
+    - title
+  
+  structure:
+    - heading_levels: "Start with # for appendix title"
+    - cross_references: "Must link back to relevant chapters"
+
+glossary:
+  entry_format:
+    - term: "Bold term"
+    - definition: "Clear, concise definition"
+    - context: "Optional usage example"
+    - related_terms: "Optional cross-references"
+
+bibliography:
+  entry_requirements:
+    - complete_metadata: "All required BibTeX fields"
+    - doi_preferred: "Include DOI when available"
+    - peer_review_threshold: "50% of sources must be peer-reviewed"

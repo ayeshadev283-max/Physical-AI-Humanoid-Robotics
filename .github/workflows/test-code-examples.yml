@@ -1,0 +1,100 @@
+name: Validate Code Examples
+
+on:
+  push:
+    branches: [main, develop]
+    paths:
+      - 'examples/**'
+      - 'docs/**/*.md'
+  pull_request:
+    branches: [main, develop]
+    paths:
+      - 'examples/**'
+      - 'docs/**/*.md'
+
+jobs:
+  validate-python:
+    name: Validate Python Examples
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install Python linters
+        run: |
+          pip install pylint black flake8
+
+      - name: Run Python syntax check
+        run: |
+          find examples -name "*.py" -exec python -m py_compile {} \;
+
+      - name: Run pylint
+        run: |
+          find examples -name "*.py" -exec pylint --rcfile=.pylintrc {} \; || true
+
+  validate-cpp:
+    name: Validate C++ Examples
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install clang-format
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y clang-format
+
+      - name: Check C++ formatting
+        run: |
+          find examples -name "*.cpp" -o -name "*.hpp" | xargs clang-format --dry-run --Werror || true
+
+  validate-yaml:
+    name: Validate YAML Files
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install yamllint
+        run: |
+          pip install yamllint
+
+      - name: Run yamllint
+        run: |
+          find examples -name "*.yaml" -o -name "*.yml" | xargs yamllint -c .yamllint || true
+
+  validate-markdown:
+    name: Validate Markdown
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install markdownlint
+        run: npm install -g markdownlint-cli
+
+      - name: Run markdownlint
+        run: markdownlint docs/**/*.md --config .markdownlint.json || true
+
+  validate-citations:
+    name: Validate Citations
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run citation validation
+        run: npm run validate:citations || true

@@ -1,0 +1,69 @@
+---
+# Citation Rules and Requirements
+# Ensures academic rigor and proper attribution
+
+format:
+  style: "APA 7th Edition"
+  inline_format: "[@citationKey]"
+  bibliography_tool: "Zotero with Better BibTeX"
+
+source_requirements:
+  peer_review_threshold: 0.50
+  minimum_per_chapter: 3
+  
+  acceptable_sources:
+    peer_reviewed:
+      - journal_articles
+      - conference_proceedings
+      - peer_reviewed_books
+    
+    authoritative:
+      - technical_manuals
+      - official_documentation
+      - textbooks
+    
+    discouraged:
+      - blog_posts
+      - wikipedia
+      - non_peer_reviewed_websites
+
+citation_best_practices:
+  - "Cite primary sources when possible"
+  - "Avoid over-citing single sources"
+  - "Include recent publications (within 5 years) for rapidly evolving topics"
+  - "Balance foundational papers with current research"
+  - "Cite open-source projects and frameworks used in examples"
+
+metadata_requirements:
+  required_bibtex_fields:
+    article:
+      - author
+      - title
+      - journal
+      - year
+      - volume
+      - pages
+    
+    inproceedings:
+      - author
+      - title
+      - booktitle
+      - year
+      - pages
+    
+    book:
+      - author
+      - title
+      - publisher
+      - year
+  
+  recommended_fields:
+    - doi
+    - url
+    - isbn
+
+validation:
+  - "All citations must have corresponding BibTeX entry"
+  - "No orphaned bibliography entries (unused citations)"
+  - "Citation keys must follow format: AuthorYear (e.g., Brooks1991)"
+  - "Peer-review percentage must meet threshold"

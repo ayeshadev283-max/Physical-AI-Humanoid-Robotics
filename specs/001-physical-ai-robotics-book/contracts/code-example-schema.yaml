@@ -1,0 +1,99 @@
+---
+# Code Example Structure and Requirements
+# Ensures all code examples are runnable, tested, and well-documented
+
+directory_structure:
+  pattern: "examples/module-{N}-{name}/"
+  
+  required_files:
+    - README.md
+    - requirements.txt (Python) or package.json (JavaScript) or CMakeLists.txt (C++)
+    - LICENSE (Apache 2.0)
+  
+  optional_files:
+    - Dockerfile
+    - docker-compose.yml
+    - .env.example
+
+code_quality:
+  python:
+    - linter: "pylint"
+    - formatter: "black"
+    - type_checker: "mypy (optional)"
+    - docstring_style: "Google or NumPy"
+  
+  cpp:
+    - linter: "clang-tidy"
+    - formatter: "clang-format"
+    - standard: "C++17 or later"
+  
+  javascript:
+    - linter: "eslint"
+    - formatter: "prettier"
+    - standard: "ES6+"
+  
+  yaml:
+    - linter: "yamllint"
+    - indentation: "2 spaces"
+
+documentation:
+  readme_sections:
+    - Overview
+    - Prerequisites
+    - Installation
+    - Usage
+    - Expected Output
+    - Troubleshooting
+    - License
+  
+  inline_comments:
+    - "Explain non-obvious logic"
+    - "Reference relevant book chapters"
+    - "Note ROS 2 or framework-specific patterns"
+
+testing_strategy:
+  tier1_syntax:
+    - "Python: python -m py_compile"
+    - "C++: clang-format --dry-run"
+    - "YAML: yamllint"
+  
+  tier2_markdown_extraction:
+    - "Extract code blocks from markdown"
+    - "Validate syntax independently"
+    - "Check for common mistakes"
+  
+  tier3_docker_integration:
+    - "Run full example in containerized environment"
+    - "Verify expected output"
+    - "Test with minimal dependencies"
+
+reproducibility:
+  - "Pin dependency versions"
+  - "Provide Dockerfile for complex setups"
+  - "Document hardware requirements (GPU, sensors)"
+  - "Include sample data where needed"
+
+examples_by_module:
+  module_0:
+    - "Conceptual pseudocode only"
+    - "Focus on algorithmic understanding"
+  
+  module_1:
+    - "ROS 2 nodes, launch files, URDF"
+    - "Python and C++ examples"
+  
+  module_2:
+    - "Gazebo SDF files, Unity C# scripts"
+    - "Simulation configuration"
+  
+  module_3:
+    - "Isaac Sim Python scripts"
+    - "Isaac ROS launch files"
+  
+  module_4:
+    - "OpenVLA inference scripts"
+    - "Fine-tuning examples"
+  
+  module_5:
+    - "Complete system integration"
+    - "Deployment scripts"

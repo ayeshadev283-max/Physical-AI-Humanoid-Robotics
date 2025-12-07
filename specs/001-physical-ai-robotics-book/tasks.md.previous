@@ -1,0 +1,328 @@
+# Tasks: Physical AI & Humanoid Robotics Book
+
+**Input**: Design documents from `/specs/001-physical-ai-robotics-book/`
+**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
+
+**Tests**: Tests are NOT requested in this specification. Focus is on content creation and validation workflows.
+
+**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
+
+## Format: `[ID] [P?] [Story] Description`
+
+- **[P]**: Can run in parallel (different files, no dependencies)
+- **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3, US4)
+- Include exact file paths in descriptions
+
+## Path Conventions
+
+- **Documentation project**: `docs/chapters/`, `docs/appendices/`, `docs/references/`, `examples/`
+- **Configuration**: `docusaurus.config.js`, `sidebars.js`, `package.json`
+- **Quality**: `.github/workflows/`, `requirements.txt`, validation scripts
+
+---
+
+## Phase 1: Setup (Shared Infrastructure)
+
+**Purpose**: Initialize Docusaurus project, configure deployment, and set up development environment
+
+- [ ] T001 Initialize Docusaurus project with `npx create-docusaurus@latest . classic` in repository root
+- [ ] T002 Configure docusaurus.config.js with site metadata (title: "Physical AI & Humanoid Robotics", GitHub Pages URL, navigation)
+- [ ] T003 [P] Create initial sidebars.js structure with 4 parts (Foundations, Algorithms, Case Studies, Future) and appendices
+- [ ] T004 [P] Create docs/ directory structure: docs/chapters/, docs/appendices/, docs/references/, docs/assets/ subdirectories
+- [ ] T005 [P] Create examples/ directory structure: examples/perception/, examples/planning/, examples/control/, examples/learning/
+- [ ] T006 [P] Create requirements.txt with pinned Python dependencies (numpy==1.24.3, torch==2.1.0, opencv-python==4.8.0, pybullet==3.2.5, scipy==1.10.1, matplotlib==3.7.1)
+- [ ] T007 [P] Create package.json with Docusaurus 3.x dependencies and scripts (start, build, deploy)
+- [ ] T008 [P] Create .github/workflows/deploy.yml for GitHub Pages deployment automation
+- [ ] T009 [P] Create .github/workflows/validate-content.yml for link checking and markdown linting
+- [ ] T010 [P] Create .github/workflows/test-code-examples.yml for pytest execution on all code examples
+- [ ] T011 Create docs/index.md landing page with book overview, target audience, prerequisites, and navigation guide
+
+---
+
+## Phase 2: Foundational (Blocking Prerequisites)
+
+**Purpose**: Core infrastructure that MUST be complete before ANY user story (chapter content) can be implemented
+
+**⚠️ CRITICAL**: No user story work can begin until this phase is complete
+
+- [ ] T012 Create docs/references/bibliography.md with APA format structure and categorization (Peer-Reviewed, Textbooks, Documentation, Web)
+- [ ] T013 [P] Create docs/glossary.md with alphabetical glossary structure and Docusaurus search integration
+- [ ] T014 [P] Create scripts/validate-citations.py to check APA format, verify 50% peer-reviewed requirement, and validate inline citations match bibliography
+- [ ] T015 [P] Create scripts/validate-code.py to syntax-check all Python code examples in docs/ and examples/
+- [ ] T016 [P] Create pytest configuration in tests/conftest.py for code example testing framework
+- [ ] T017 [P] Create templates from contracts: docs/templates/chapter-template.md, docs/templates/code-example-template.md, docs/templates/case-study-template.md
+- [ ] T018 Add foundational bibliography entries (50+ peer-reviewed papers from research.md): Siciliano & Khatib, Thrun et al., LaValle, Murray et al., Sutton & Barto, and chapter-specific sources
+- [ ] T019 Create docs/appendices/A-prerequisites.md with linear algebra, calculus, probability, and Python/NumPy primer
+- [ ] T020 Create docs/appendices/B-mathematics-review.md with matrix operations, optimization, and control theory basics
+- [ ] T021 Create docs/appendices/C-setup-instructions.md with Python 3.11+, ROS 2 Humble, PyTorch, PyBullet, and Docusaurus setup
+
+**Checkpoint**: Foundation ready - user story implementation can now begin in parallel
+
+---
+
+## Phase 3: User Story 1 - Foundation Chapters Access (Priority: P1) 🎯 MVP
+
+**Goal**: Graduate students can understand foundational concepts of physical AI and humanoid robotics
+
+**Independent Test**: Graduate student reads chapters 1-3, defines key terms, explains historical developments, and articulates core principles
+
+### Implementation for User Story 1
+
+- [ ] T022 [P] [US1] Write Chapter 1 (Introduction to Physical AI) in docs/chapters/01-introduction.md: definitions, embodied vs. disembodied AI, historical context (SHAKEY to modern), Moravec's paradox (25-30 pages with 10-15 citations)
+- [ ] T023 [P] [US1] Write Chapter 2 (Foundations of Humanoid Robotics) in docs/chapters/02-foundations-physical-ai.md: design principles, morphological computation, why humanoid form, DOF analysis, biped vs. wheeled (25-30 pages with 10-15 citations)
+- [ ] T024 [P] [US1] Write Chapter 3 (Humanoid Hardware Architecture) in docs/chapters/03-humanoid-hardware.md: sensors (vision, tactile, proprioceptive, IMUs), actuators (electric, hydraulic, pneumatic), compute architectures (30-35 pages with 15-20 citations)
+- [ ] T025 [US1] Add Chapter 1 glossary terms to docs/glossary.md: physical AI, embodied cognition, Moravec's paradox, disembodied AI, SHAKEY
+- [ ] T026 [US1] Add Chapter 2 glossary terms to docs/glossary.md: morphological computation, degrees of freedom, biped locomotion, humanoid robot, actuator
+- [ ] T027 [US1] Add Chapter 3 glossary terms to docs/glossary.md: proprioception, IMU, RGB-D sensor, tactile sensor, servo motor, hydraulic actuator
+- [ ] T028 [US1] Create 3-5 end-of-chapter exercises for Chapter 1 (conceptual questions on embodiment, historical analysis)
+- [ ] T029 [US1] Create 3-5 end-of-chapter exercises for Chapter 2 (DOF calculations, biped vs. wheeled trade-off analysis)
+- [ ] T030 [US1] Create 3-5 end-of-chapter exercises for Chapter 3 (sensor selection for scenarios, actuator comparison)
+- [ ] T031 [US1] Add Chapter 1-3 citations to docs/references/bibliography.md (40-50 sources total, ensure 50%+ peer-reviewed)
+- [ ] T032 [US1] Create diagrams for Chapter 1: timeline of humanoid robotics development, embodied vs. disembodied AI comparison
+- [ ] T033 [US1] Create diagrams for Chapter 2: humanoid DOF illustration, morphological computation examples
+- [ ] T034 [US1] Create diagrams for Chapter 3: sensor types comparison table, actuator technology comparison, hardware architecture schematic
+- [ ] T035 [US1] Update sidebars.js to include Chapters 1-3 in "Part I: Foundations" section
+
+**Checkpoint**: At this point, User Story 1 should be fully functional - students can read foundation chapters and learn core concepts
+
+---
+
+## Phase 4: User Story 4 - Reproducible Code Examples (Priority: P2)
+
+**Goal**: Students gain hands-on experience with runnable, modifiable code demonstrating algorithms
+
+**Independent Test**: Student sets up environment, runs all code examples, and modifies one example to solve a related problem
+
+**Note**: Code examples are P2 (implemented before US2 technical chapters) because they support learning in chapters 4-8
+
+### Implementation for User Story 4 (Code Infrastructure)
+
+- [ ] T036 [P] [US4] Create examples/perception/vision_pipeline.py: camera calibration, image preprocessing, object detection (OpenCV + NumPy)
+- [ ] T037 [P] [US4] Create examples/perception/sensor_fusion.py: Extended Kalman Filter for multi-sensor fusion (NumPy + SciPy)
+- [ ] T038 [P] [US4] Create examples/perception/slam_basic.py: Simple 2D SLAM with landmarks (NumPy + Matplotlib)
+- [ ] T039 [P] [US4] Create examples/planning/rrt_planner.py: RRT algorithm for 2D path planning (NumPy + Matplotlib visualization)
+- [ ] T040 [P] [US4] Create examples/planning/a_star.py: A* search on grid map (NumPy + Matplotlib)
+- [ ] T041 [P] [US4] Create examples/planning/trajectory_optimization.py: Simple trajectory smoothing (SciPy optimization)
+- [ ] T042 [P] [US4] Create examples/control/pid_controller.py: PID controller for joint control (NumPy + PyBullet simulation)
+- [ ] T043 [P] [US4] Create examples/control/inverse_kinematics.py: Numerical IK solver for manipulator (NumPy + SciPy)
+- [ ] T044 [P] [US4] Create examples/control/mpc_simple.py: Model Predictive Control for 1D motion (NumPy + SciPy)
+- [ ] T045 [P] [US4] Create examples/learning/imitation_learning.py: Behavioral cloning for simple task (PyTorch + NumPy)
+- [ ] T046 [P] [US4] Create examples/learning/reinforcement_learning.py: Q-learning for grid world (NumPy + Matplotlib)
+- [ ] T047 [P] [US4] Create examples/learning/policy_gradient.py: Simple policy gradient (PyTorch)
+- [ ] T048 [US4] Create tests/test_perception.py: pytest tests for all perception examples (setup, execution, output validation)
+- [ ] T049 [US4] Create tests/test_planning.py: pytest tests for all planning examples
+- [ ] T050 [US4] Create tests/test_control.py: pytest tests for all control examples
+- [ ] T051 [US4] Create tests/test_learning.py: pytest tests for all learning examples
+- [ ] T052 [US4] Create README.md files in examples/perception/, examples/planning/, examples/control/, examples/learning/ with setup instructions and usage
+- [ ] T053 [US4] Add code example metadata to relevant chapters (front matter linking to examples)
+- [ ] T054 [US4] Run pytest on all code examples and fix any failures to ensure 100% pass rate
+
+**Checkpoint**: All code examples implemented, tested, and documented - ready to reference in technical chapters
+
+---
+
+## Phase 5: User Story 2 - Technical Deep-Dive Content (Priority: P2)
+
+**Goal**: Advanced students access comprehensive technical coverage of perception, planning, control, learning, and HRI
+
+**Independent Test**: Student implements a robotics algorithm based solely on chapter explanations, code examples, and mathematical formulations
+
+### Implementation for User Story 2
+
+- [ ] T055 [P] [US2] Write Chapter 4 (Perception and Sensor Fusion) in docs/chapters/04-perception-sensors.md: camera calibration, vision pipelines, sensor fusion (EKF, particle filters), SLAM basics (35-40 pages, 20-25 citations, reference 3 code examples)
+- [ ] T056 [P] [US2] Write Chapter 5 (Motion Planning and Navigation) in docs/chapters/05-motion-planning.md: configuration space, RRT, PRM, A*, D*, trajectory optimization, collision detection (35-40 pages, 20-25 citations, reference 3 code examples)
+- [ ] T057 [P] [US2] Write Chapter 6 (Control Architectures) in docs/chapters/06-control-architectures.md: PID, state-space control, MPC, inverse kinematics, dynamics, ZMP/CoM for bipeds (40-45 pages, 25-30 citations, reference 3 code examples)
+- [ ] T058 [P] [US2] Write Chapter 7 (Machine Learning for Robotics) in docs/chapters/07-learning-algorithms.md: supervised learning for perception, imitation learning, RL (policy gradients, Q-learning, SAC), sim-to-real (40-45 pages, 25-30 citations, reference 3 code examples)
+- [ ] T059 [P] [US2] Write Chapter 8 (Human-Robot Interaction) in docs/chapters/08-human-robot-interaction.md: safety (collision avoidance, compliant control), intent recognition, gesture/speech interfaces, social cues (30-35 pages, 15-20 citations, reference 2 code examples)
+- [ ] T060 [US2] Add Chapter 4 glossary terms: sensor fusion, Kalman filter, SLAM, particle filter, visual odometry, depth estimation
+- [ ] T061 [US2] Add Chapter 5 glossary terms: configuration space, RRT, PRM, A*, trajectory optimization, collision detection, sampling-based planning
+- [ ] T062 [US2] Add Chapter 6 glossary terms: PID control, MPC, inverse kinematics, forward dynamics, ZMP, center of mass, whole-body control
+- [ ] T063 [US2] Add Chapter 7 glossary terms: imitation learning, behavioral cloning, reinforcement learning, policy gradient, Q-learning, sim-to-real, domain randomization
+- [ ] T064 [US2] Add Chapter 8 glossary terms: human-robot interaction, intent recognition, compliant control, gesture recognition, social robotics
+- [ ] T065 [US2] Create 5-8 end-of-chapter exercises for Chapter 4 (implement sensor fusion, analyze SLAM results)
+- [ ] T066 [US2] Create 5-8 end-of-chapter exercises for Chapter 5 (implement RRT variant, compare planners)
+- [ ] T067 [US2] Create 5-8 end-of-chapter exercises for Chapter 6 (tune PID, implement MPC, analyze ZMP stability)
+- [ ] T068 [US2] Create 5-8 end-of-chapter exercises for Chapter 7 (train imitation learning policy, implement Q-learning, analyze sim-to-real gap)
+- [ ] T069 [US2] Create 5-8 end-of-chapter exercises for Chapter 8 (design safe HRI scenario, implement intent recognition)
+- [ ] T070 [US2] Add Chapter 4-8 citations to docs/references/bibliography.md (100-130 sources total for these chapters, ensure 50%+ peer-reviewed)
+- [ ] T071 [US2] Create diagrams for Chapter 4: sensor fusion pipeline, SLAM loop closure, EKF update cycle
+- [ ] T072 [US2] Create diagrams for Chapter 5: RRT tree growth, configuration space obstacles, A* search visualization
+- [ ] T073 [US2] Create diagrams for Chapter 6: PID control loop, MPC prediction horizon, ZMP stability region for biped
+- [ ] T074 [US2] Create diagrams for Chapter 7: imitation learning workflow, RL training loop, sim-to-real pipeline
+- [ ] T075 [US2] Create diagrams for Chapter 8: HRI safety zones, intent recognition architecture, gesture control flow
+- [ ] T076 [US2] Update sidebars.js to include Chapters 4-8 in "Part II: Core Algorithmic Domains" section
+
+**Checkpoint**: All technical chapters complete - students can implement algorithms and understand deep technical content
+
+---
+
+## Phase 6: User Story 3 - Case Studies and Applications (Priority: P3)
+
+**Goal**: Students understand how physical AI concepts apply in real-world humanoid systems
+
+**Independent Test**: Student analyzes a new robotics system and identifies applicable principles from case studies
+
+### Implementation for User Story 3
+
+- [ ] T077 [P] [US3] Write Chapter 9 (Case Study: Boston Dynamics Atlas) in docs/chapters/09-case-study-atlas.md: hardware specs, perception system, locomotion control (parkour), manipulation, design trade-offs (20-25 pages, 10-15 peer-reviewed citations including Kuindersma et al., Deits et al., Dai et al.)
+- [ ] T078 [P] [US3] Write Chapter 10 (Case Study: Tesla Optimus) in docs/chapters/10-case-study-optimus.md: hardware specs, vision-based control, learning from demonstrations, production focus, design trade-offs (20-25 pages, 5-10 citations including Tesla AI Day presentations, mark speculative content per constitution)
+- [ ] T079 [P] [US3] Write Chapter 11 (Case Study: Research Platforms) in docs/chapters/11-case-study-research-platforms.md: TALOS hardware/control, iCub cognitive architecture, ROS integration, research community contributions (20-25 pages, 15-20 peer-reviewed citations including Stasse et al., Metta et al.)
+- [ ] T080 [US3] Add case study glossary terms: Atlas, Optimus, TALOS, iCub, parkour control, whole-body optimization, end-to-end learning, cognitive architecture
+- [ ] T081 [US3] Create 3-5 end-of-chapter exercises for Chapter 9 (analyze Atlas capabilities, critique design decisions)
+- [ ] T082 [US3] Create 3-5 end-of-chapter exercises for Chapter 10 (compare Optimus to Atlas, analyze production challenges)
+- [ ] T083 [US3] Create 3-5 end-of-chapter exercises for Chapter 11 (evaluate research platform design, propose modifications)
+- [ ] T084 [US3] Add Chapter 9-11 citations to docs/references/bibliography.md (30-45 case study sources, ensure peer-reviewed sources for Atlas and research platforms)
+- [ ] T085 [US3] Create diagrams for Chapter 9: Atlas hardware architecture, perception-planning-control pipeline, locomotion control hierarchy
+- [ ] T086 [US3] Create diagrams for Chapter 10: Optimus hardware architecture, vision-based control loop, learning pipeline
+- [ ] T087 [US3] Create diagrams for Chapter 11: TALOS/iCub hardware comparison, iCub cognitive architecture, ROS 2 integration
+- [ ] T088 [US3] Update sidebars.js to include Chapters 9-11 in "Part III: Case Studies" section
+
+**Checkpoint**: All case studies complete - students can analyze real-world systems and apply learned principles
+
+---
+
+## Phase 7: Synthesis and Future (Completes All User Stories)
+
+**Purpose**: Final chapter synthesizing content and exploring future directions
+
+- [ ] T089 [US2] Write Chapter 12 (Future Directions and Open Challenges) in docs/chapters/12-future-directions.md: generalization/transfer, common-sense reasoning, energy efficiency, safety/ethics, general-purpose humanoids (20-25 pages, 15-20 citations, mark speculative content per constitution)
+- [ ] T090 [US2] Add Chapter 12 glossary terms: transfer learning, common-sense reasoning, energy efficiency, robot ethics, general-purpose robotics
+- [ ] T091 [US2] Create 3-5 end-of-chapter exercises for Chapter 12 (identify research gaps, propose future research directions)
+- [ ] T092 [US2] Add Chapter 12 citations to docs/references/bibliography.md (15-20 forward-looking sources)
+- [ ] T093 [US2] Create diagrams for Chapter 12: research challenge taxonomy, future capabilities roadmap
+- [ ] T094 [US2] Update sidebars.js to include Chapter 12 in main navigation
+
+---
+
+## Phase 8: Polish & Cross-Cutting Concerns
+
+**Purpose**: Final improvements, validation, and readiness for publication
+
+- [ ] T095 [P] Create docs/appendices/D-solutions.md with selected exercise solutions (20-30% of exercises, worked solutions for conceptual, mathematical, and implementation problems)
+- [ ] T096 [P] Finalize docs/glossary.md with all 200+ terms, cross-references, and search integration
+- [ ] T097 [P] Run scripts/validate-citations.py to verify all inline citations have bibliography entries and 50%+ peer-reviewed requirement is met
+- [ ] T098 [P] Run scripts/validate-code.py to syntax-check all code in chapters and examples
+- [ ] T099 [P] Run npm run build to verify Docusaurus builds without errors
+- [ ] T100 [P] Run markdown linting on all docs/ files to ensure consistent formatting
+- [ ] T101 Create docs/README.md with book overview, structure, constitution compliance summary, and contributor guide link
+- [ ] T102 Add cover/landing page enhancements to docs/index.md with visual design, navigation quick links, and target audience guidance
+- [ ] T103 Perform accessibility review: verify all images have alt text, semantic headings are correct, color contrast meets WCAG 2.1 AA
+- [ ] T104 Run link checking to verify all internal and external links are valid
+- [ ] T105 Perform constitution compliance audit: verify accuracy (all claims sourced), clarity (graduate CS audience), reproducibility (code examples tested), rigor (50%+ peer-reviewed, speculative content marked)
+- [ ] T106 Submit book draft to 3 subject matter experts (robotics faculty/senior researchers) for technical review and validation (SC-007)
+- [ ] T107 Incorporate SME feedback and make corrections to chapters, code examples, or citations as needed
+- [ ] T108 Perform final proofreading pass on all chapters for grammar, spelling, and style consistency
+- [ ] T109 Create GitHub Pages deployment configuration and test deployment to staging environment
+- [ ] T110 Run full test suite: pytest (all code examples), link checking, citation validation, markdown linting, Docusaurus build
+
+---
+
+## Dependencies & Execution Order
+
+### Phase Dependencies
+
+- **Setup (Phase 1)**: No dependencies - can start immediately
+- **Foundational (Phase 2)**: Depends on Setup completion - BLOCKS all user stories
+- **User Story 1 (Phase 3)**: Depends on Foundational completion - can proceed independently
+- **User Story 4 (Phase 4)**: Depends on Foundational completion - can proceed independently (provides code for US2)
+- **User Story 2 (Phase 5)**: Depends on Foundational completion AND User Story 4 completion (references code examples)
+- **User Story 3 (Phase 6)**: Depends on Foundational completion AND User Story 2 completion (applies concepts from technical chapters)
+- **Synthesis (Phase 7)**: Depends on all previous user stories completion
+- **Polish (Phase 8)**: Depends on all content completion (User Stories 1-3 + Chapter 12)
+
+### User Story Dependencies
+
+- **User Story 1 (P1)**: Can start after Foundational (Phase 2) - No dependencies on other stories
+- **User Story 4 (P2)**: Can start after Foundational (Phase 2) - No dependencies on other stories (but supports US2)
+- **User Story 2 (P2)**: Can start after Foundational (Phase 2) AND User Story 4 (code examples ready) - Depends on US4
+- **User Story 3 (P3)**: Can start after User Story 2 completion (applies technical concepts) - Depends on US2
+
+### Within Each User Story
+
+- **User Story 1**: All chapter writing tasks [P] can run in parallel; glossary, exercises, diagrams, and sidebars updates sequential after chapters
+- **User Story 4**: All code example creation tasks [P] can run in parallel; tests sequential after code; README and metadata updates sequential
+- **User Story 2**: All chapter writing tasks [P] can run in parallel; glossary, exercises, diagrams, and sidebars updates sequential after chapters
+- **User Story 3**: All chapter writing tasks [P] can run in parallel; glossary, exercises, diagrams, and sidebars updates sequential after chapters
+
+### Parallel Opportunities
+
+- All Setup tasks (T001-T011) can run in parallel except T001 (Docusaurus init must be first)
+- All Foundational tasks (T012-T021) marked [P] can run in parallel
+- Within User Story 1: T022, T023, T024 (chapter writing) can run in parallel
+- Within User Story 4: T036-T047 (code examples) can run in parallel; T048-T051 (tests) can run in parallel after code is complete
+- Within User Story 2: T055-T059 (chapter writing) can run in parallel
+- Within User Story 3: T077-T079 (case study writing) can run in parallel
+- Polish tasks (T095-T104, T108-T110) marked [P] can run in parallel
+
+---
+
+## Parallel Example: User Story 1 (Foundation Chapters)
+
+```bash
+# Launch all chapter writing for User Story 1 in parallel:
+Task: "Write Chapter 1 (Introduction to Physical AI) in docs/chapters/01-introduction.md"
+Task: "Write Chapter 2 (Foundations of Humanoid Robotics) in docs/chapters/02-foundations-physical-ai.md"
+Task: "Write Chapter 3 (Humanoid Hardware Architecture) in docs/chapters/03-humanoid-hardware.md"
+
+# After chapters complete, launch supporting tasks in parallel:
+Task: "Add Chapter 1 glossary terms"
+Task: "Add Chapter 2 glossary terms"
+Task: "Add Chapter 3 glossary terms"
+Task: "Create exercises for Chapter 1"
+Task: "Create exercises for Chapter 2"
+Task: "Create exercises for Chapter 3"
+Task: "Create diagrams for Chapter 1"
+Task: "Create diagrams for Chapter 2"
+Task: "Create diagrams for Chapter 3"
+```
+
+---
+
+## Implementation Strategy
+
+### MVP First (User Story 1 Only)
+
+1. Complete Phase 1: Setup (T001-T011)
+2. Complete Phase 2: Foundational (T012-T021) - CRITICAL blocking phase
+3. Complete Phase 3: User Story 1 (T022-T035) - Foundation chapters
+4. **STOP and VALIDATE**: Test User Story 1 independently (graduate student reads chapters 1-3, demonstrates comprehension)
+5. Deploy MVP to GitHub Pages for review
+
+**MVP Delivers**: Students can learn physical AI fundamentals, humanoid robotics principles, and hardware concepts
+
+### Incremental Delivery
+
+1. Complete Setup + Foundational → Foundation infrastructure ready
+2. Add User Story 1 (Foundation Chapters) → Test independently → Deploy (MVP!)
+3. Add User Story 4 (Code Examples) → Test independently → Deploy
+4. Add User Story 2 (Technical Chapters, depends on US4) → Test independently → Deploy
+5. Add User Story 3 (Case Studies, depends on US2) → Test independently → Deploy
+6. Add Chapter 12 (Future Directions) → Polish → Final deployment
+7. Each story adds value without breaking previous stories
+
+### Parallel Team Strategy
+
+With multiple developers/writers:
+
+1. Team completes Setup + Foundational together (coordination required)
+2. Once Foundational is done:
+   - **Writer A**: User Story 1 (Chapters 1-3)
+   - **Developer B**: User Story 4 (Code Examples)
+   - Wait for US4 completion, then **Writer C**: User Story 2 (Chapters 4-8)
+   - Wait for US2 completion, then **Writer D**: User Story 3 (Chapters 9-11)
+3. Polish phase can be parallelized across team
+
+---
+
+## Notes
+
+- **Total Tasks**: 110 tasks
+- **Parallel Opportunities**: 50+ tasks can run in parallel within their phases
+- **Tests**: No explicit test tasks (not requested in spec). Validation via manual review, SME feedback, and automated checks (linting, syntax, citations)
+- Each user story is independently completable and deliverable
+- MVP (User Story 1) = 14 tasks after Setup/Foundational (T022-T035)
+- Code examples (User Story 4) support technical chapters (User Story 2)
+- Constitution compliance enforced throughout: accuracy (sourced claims), clarity (graduate audience), reproducibility (tested code), rigor (50% peer-reviewed, speculative content marked)
+- Stop at any checkpoint to validate user story independently before proceeding
+- Avoid cross-story dependencies that break independence
+

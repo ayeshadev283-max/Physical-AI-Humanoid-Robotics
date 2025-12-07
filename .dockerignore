@@ -1,0 +1,79 @@
+# Git
+.git/
+.gitignore
+.gitattributes
+
+# Documentation
+*.md
+README.md
+LICENSE*
+docs/
+
+# Node.js / Docusaurus
+node_modules/
+.docusaurus/
+build/
+.cache-loader/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+package-lock.json
+yarn.lock
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+ENV/
+env/
+*.egg-info/
+.pytest_cache/
+.coverage
+htmlcov/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+Thumbs.db
+
+# Environment variables (IMPORTANT: Don't copy secrets to Docker)
+.env
+.env.*
+!.env.example
+
+# Testing
+coverage/
+.coverage*
+test-results/
+
+# Temporary files
+*.tmp
+*.bak
+*.orig
+.specify/
+
+# CI/CD
+.github/
+.gitlab-ci.yml
+.travis.yml
+
+# Build artifacts
+dist/
+out/
+target/
+
+# Large binary files (keep images light)
+*.mp4
+*.avi
+*.mov
+*.zip
+*.tar.gz

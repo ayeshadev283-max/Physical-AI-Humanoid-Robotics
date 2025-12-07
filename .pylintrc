@@ -1,0 +1,24 @@
+[MASTER]
+ignore=venv,.venv,env,__pycache__,.git
+
+[MESSAGES CONTROL]
+disable=
+    C0111,  # missing-docstring
+    C0103,  # invalid-name
+    R0913,  # too-many-arguments
+    R0914,  # too-many-locals
+    W0212,  # protected-access
+    C0301,  # line-too-long (handled by black)
+
+[FORMAT]
+max-line-length=100
+indent-string='    '
+
+[BASIC]
+good-names=i,j,k,x,y,z,dt,dx,dy,dz,ax,ay,az,id,tf
+
+[DESIGN]
+max-args=10
+max-locals=20
+max-returns=6
+max-branches=15

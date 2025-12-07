@@ -31,7 +31,24 @@
 
 *GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
 
-[Gates determined based on constitution file]
+**Academic Rigor Compliance:**
+- [ ] All technical claims are verifiable against primary or authoritative sources
+- [ ] Code examples include complete dependency specifications and reproducibility details
+- [ ] Content maintains clarity for academic audience with CS background
+- [ ] Citations follow APA format (when applicable)
+- [ ] At least 50% of sources are peer-reviewed (when applicable)
+- [ ] Speculative content is clearly marked as such
+
+**Technical Standards:**
+- [ ] Markdown follows semantic heading structure
+- [ ] Code blocks specify language for syntax highlighting
+- [ ] Links use descriptive text
+- [ ] File organization follows project structure in constitution
+
+**Quality Gates:**
+- [ ] Code examples will be syntax-validated before publication
+- [ ] Links will be verified (internal and external)
+- [ ] Reproducibility documented for all methodologies
 
 ## Project Structure
 

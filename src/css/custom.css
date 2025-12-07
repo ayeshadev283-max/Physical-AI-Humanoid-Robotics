@@ -1,0 +1,276 @@
+/**
+ * Any CSS included here will be global. The classic template
+ * bundles Infima by default. Infima is a CSS framework designed to
+ * work well for content-centric websites.
+ */
+
+/* You can override the default Infima variables here. */
+:root {
+  --ifm-color-primary: #2e8555;
+  --ifm-color-primary-dark: #29784c;
+  --ifm-color-primary-darker: #277148;
+  --ifm-color-primary-darkest: #205d3b;
+  --ifm-color-primary-light: #33925d;
+  --ifm-color-primary-lighter: #359962;
+  --ifm-color-primary-lightest: #3cad6e;
+  --ifm-code-font-size: 95%;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.1);
+}
+
+/* For readability in dark mode */
+[data-theme='dark'] {
+  --ifm-color-primary: #25c2a0;
+  --ifm-color-primary-dark: #21af90;
+  --ifm-color-primary-darker: #1fa588;
+  --ifm-color-primary-darkest: #1a8870;
+  --ifm-color-primary-light: #29d5b0;
+  --ifm-color-primary-lighter: #32d8b4;
+  --ifm-color-primary-lightest: #4fddbf;
+  --docusaurus-highlighted-code-line-bg: rgba(0, 0, 0, 0.3);
+}
+
+/* Custom styles for academic book layout */
+.markdown h1 {
+  font-size: 2.5rem;
+  margin-top: 2rem;
+  margin-bottom: 1rem;
+}
+
+.markdown h2 {
+  font-size: 2rem;
+  margin-top: 1.5rem;
+  margin-bottom: 0.75rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-300);
+  padding-bottom: 0.5rem;
+}
+
+.markdown h3 {
+  font-size: 1.5rem;
+  margin-top: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Code block styling */
+.prism-code {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Bibliography and citation styling */
+.bibliography-entry {
+  margin-bottom: 1rem;
+  padding-left: 2rem;
+  text-indent: -2rem;
+}
+
+/* Exercise and problem styling */
+.exercise {
+  background-color: var(--ifm-color-emphasis-100);
+  padding: 1rem;
+  border-left: 4px solid var(--ifm-color-primary);
+  margin: 1rem 0;
+}
+
+/* Figure captions */
+figcaption {
+  font-style: italic;
+  text-align: center;
+  margin-top: 0.5rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+/* Academic content enhancements */
+
+/* Definition lists for glossary terms */
+dl {
+  margin: 1rem 0;
+}
+
+dt {
+  font-weight: bold;
+  margin-top: 0.75rem;
+}
+
+dd {
+  margin-left: 2rem;
+  margin-bottom: 0.5rem;
+}
+
+/* Math equations (KaTeX) */
+.katex-display {
+  margin: 1.5rem 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+.katex {
+  font-size: 1.1em;
+}
+
+/* Blockquote styling for important notes */
+blockquote {
+  border-left: 4px solid var(--ifm-color-warning);
+  background-color: var(--ifm-color-warning-contrast-background);
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+blockquote p {
+  margin: 0;
+}
+
+/* Table styling for academic content */
+table {
+  margin: 1.5rem 0;
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th {
+  background-color: var(--ifm-color-emphasis-200);
+  font-weight: bold;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+td {
+  padding: 0.75rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+/* Learning objectives and key takeaways */
+.learning-objectives,
+.key-takeaways {
+  background-color: var(--ifm-color-info-contrast-background);
+  border-left: 4px solid var(--ifm-color-info);
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+.learning-objectives h3,
+.key-takeaways h3 {
+  margin-top: 0;
+  color: var(--ifm-color-info-dark);
+}
+
+/* Warning/caution boxes */
+.warning,
+.caution {
+  background-color: var(--ifm-color-warning-contrast-background);
+  border-left: 4px solid var(--ifm-color-warning);
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+/* Algorithm pseudocode styling */
+.algorithm {
+  background-color: var(--ifm-color-emphasis-100);
+  padding: 1rem;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  margin: 1rem 0;
+  font-family: var(--ifm-font-family-monospace);
+}
+
+/* Improve code example headers */
+.prism-code pre {
+  padding: 1rem;
+}
+
+/* Footnote styling */
+.footnote {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-700);
+}
+
+sup {
+  font-size: 0.75rem;
+}
+
+/* Increase content readability */
+.markdown > p {
+  margin-bottom: 1rem;
+  line-height: 1.75;
+}
+
+/* Better list spacing */
+.markdown ul,
+.markdown ol {
+  margin-bottom: 1rem;
+}
+
+.markdown li {
+  margin-bottom: 0.5rem;
+}
+
+/* Diagram and figure styling */
+.mermaid {
+  text-align: center;
+  margin: 2rem 0;
+}
+
+figure {
+  margin: 2rem 0;
+  text-align: center;
+}
+
+figure img {
+  max-width: 100%;
+  height: auto;
+  border: 1px solid var(--ifm-color-emphasis-300);
+  border-radius: 4px;
+}
+
+/* Citation styling */
+cite {
+  font-style: italic;
+  color: var(--ifm-color-emphasis-800);
+}
+
+/* Example boxes */
+.example {
+  background-color: var(--ifm-color-success-contrast-background);
+  border-left: 4px solid var(--ifm-color-success);
+  padding: 1rem;
+  margin: 1.5rem 0;
+}
+
+.example-title {
+  font-weight: bold;
+  color: var(--ifm-color-success-dark);
+  margin-bottom: 0.5rem;
+}
+
+/* Improve sidebar readability */
+.menu__link {
+  font-size: 0.9rem;
+  line-height: 1.5;
+}
+
+/* Print styles for textbook */
+@media print {
+  .navbar,
+  .pagination-nav,
+  .DocSearch {
+    display: none;
+  }
+  
+  .markdown {
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+  
+  .markdown h1 {
+    page-break-before: always;
+  }
+  
+  .markdown h2,
+  .markdown h3 {
+    page-break-after: avoid;
+  }
+  
+  pre,
+  .mermaid,
+  figure {
+    page-break-inside: avoid;
+  }
+}

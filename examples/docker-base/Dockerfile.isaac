@@ -1,0 +1,25 @@
+# SPDX-License-Identifier: Apache-2.0
+# Copyright (C) 2025 Physical AI & Humanoid Robotics Book Contributors
+#
+# Base Docker image for NVIDIA Isaac examples
+# Requires: NVIDIA GPU with compute capability 7.0+, NVIDIA Container Toolkit
+
+FROM nvcr.io/nvidia/isaac-sim:2023.1.1
+
+# Install additional Python packages
+RUN pip install --no-cache-dir \
+    numpy>=1.24.0 \
+    matplotlib>=3.7.0 \
+    opencv-python>=4.8.0 \
+    torch>=2.0.0 \
+    transformers>=4.30.0
+
+# Create workspace
+RUN mkdir -p /isaac_ws
+WORKDIR /isaac_ws
+
+# Set environment variables
+ENV NVIDIA_VISIBLE_DEVICES=all
+ENV NVIDIA_DRIVER_CAPABILITIES=compute,utility,graphics
+
+CMD ["/bin/bash"]
