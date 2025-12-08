@@ -12,13 +12,15 @@ const config = {
   tagline: 'A Graduate-Level Technical Textbook',
   favicon: 'img/favicon.ico',
 
+  // GitHub Pages production URL
   url: 'https://ayeshadev283-max.github.io',
-  baseUrl: '/Physical-AI-Humanoid-Robotics/',
+  baseUrl: '/Physical-AI-Humanoid-Robotics/', // <-- repo name with trailing slash
 
-  organizationName: 'ayeshadev283-max', // Your GitHub username
-  projectName: 'Physical-AI-Humanoid-Robotics', // Your repo name
-  deploymentBranch: 'gh-pages',
-  trailingSlash: false,
+  organizationName: 'ayeshadev283-max', // GitHub username
+  projectName: 'Physical-AI-Humanoid-Robotics', // Repo name
+
+  onBrokenLinks: 'throw',
+  onBrokenMarkdownLinks: 'warn',
 
   i18n: {
     defaultLocale: 'en',
@@ -28,19 +30,21 @@ const config = {
   presets: [
     [
       'classic',
-      {
+      /** @type {import('@docusaurus/preset-classic').Options} */
+      ({
         docs: {
           routeBasePath: '/', // Serve docs at site root
           sidebarPath: require.resolve('./sidebars.js'),
           remarkPlugins: [math],
           rehypePlugins: [katex],
-          editUrl: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/',
+          editUrl:
+            'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/',
         },
         blog: false,
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
         },
-      },
+      }),
     ],
   ],
 
@@ -53,80 +57,85 @@ const config = {
     },
   ],
 
-  themeConfig: {
-    image: 'img/docusaurus-social-card.jpg',
-    navbar: {
-      title: 'Physical AI & Humanoid Robotics',
-      logo: {
-        alt: 'Book Logo',
-        src: 'img/logo.svg',
-        href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
+  themeConfig:
+    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
+    ({
+      image: 'img/docusaurus-social-card.jpg',
+      navbar: {
+        title: 'Physical AI & Humanoid Robotics',
+        logo: {
+          alt: 'Book Logo',
+          src: 'img/logo.svg',
+          href: '/',
+        },
+        items: [
+          {
+            type: 'docSidebar',
+            sidebarId: 'bookSidebar',
+            position: 'left',
+            label: 'Book',
+          },
+          {
+            href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
+            label: 'GitHub',
+            position: 'right',
+          },
+        ],
       },
-      items: [
-        {
-          type: 'docSidebar',
-          sidebarId: 'bookSidebar',
-          position: 'left',
-          label: 'Book',
-        },
-        {
-          href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
-          label: 'GitHub',
-          position: 'right',
-        },
-      ],
-    },
-    footer: {
-      style: 'dark',
-      links: [
-        {
-          title: 'Content',
-          items: [
-            { label: 'Book', to: '/' },
-            { label: 'Bibliography', to: '/references/bibliography' },
-          ],
-        },
-        {
-          title: 'Resources',
-          items: [
-            {
-              label: 'Code Examples',
-              href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/examples',
-            },
-          ],
-        },
-        {
-          title: 'More',
-          items: [
-            {
-              label: 'GitHub',
-              href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
-            },
-          ],
-        },
-      ],
-      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Book Contributors. Content licensed under <a href="/LICENSE.content.md" target="_blank">CC BY-SA 4.0</a>. Code examples licensed under <a href="/LICENSE.code.md" target="_blank">Apache 2.0</a>. Built with Docusaurus.`,
-    },
-    prism: {
-      theme: lightCodeTheme,
-      darkTheme: darkCodeTheme,
-      additionalLanguages: ['python', 'cpp', 'cmake', 'markup', 'yaml', 'bash', 'json'],
-    },
-    algolia: {
-      appId: 'YOUR_APP_ID',
-      apiKey: 'YOUR_SEARCH_API_KEY',
-      indexName: 'YOUR_INDEX_NAME',
-      contextualSearch: true,
-      searchParameters: {},
-      searchPagePath: 'search',
-    },
-  },
+      footer: {
+        style: 'dark',
+        links: [
+          {
+            title: 'Content',
+            items: [
+              {
+                label: 'Book',
+                to: '/',
+              },
+              {
+                label: 'Bibliography',
+                to: '/references/bibliography',
+              },
+            ],
+          },
+          {
+            title: 'Resources',
+            items: [
+              {
+                label: 'Code Examples',
+                href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/examples',
+              },
+            ],
+          },
+          {
+            title: 'More',
+            items: [
+              {
+                label: 'GitHub',
+                href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
+              },
+            ],
+          },
+        ],
+        copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Book Contributors. Content licensed under <a href="/LICENSE.content.md" target="_blank">CC BY-SA 4.0</a>. Code examples licensed under <a href="/LICENSE.code.md" target="_blank">Apache 2.0</a>. Built with Docusaurus.`,
+      },
+      prism: {
+        theme: lightCodeTheme,
+        darkTheme: darkCodeTheme,
+        additionalLanguages: ['python', 'cpp', 'cmake', 'markup', 'yaml', 'bash', 'json'],
+      },
+      algolia: {
+        appId: 'YOUR_APP_ID',
+        apiKey: 'YOUR_SEARCH_API_KEY',
+        indexName: 'YOUR_INDEX_NAME',
+        contextualSearch: true,
+        searchParameters: {},
+        searchPagePath: 'search',
+      },
+    }),
 
   markdown: {
     mermaid: true,
-    hooks: {
-      onBrokenMarkdownLinks: 'warn', // migrated from deprecated option
-    },
   },
   themes: ['@docusaurus/theme-mermaid'],
 };
