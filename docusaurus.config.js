@@ -1,6 +1,4 @@
 // @ts-check
-// Note: type annotations allow type checking and IDEs autocompletion
-
 const lightCodeTheme = require('prism-react-renderer').themes.github;
 const darkCodeTheme = require('prism-react-renderer').themes.dracula;
 const math = require('remark-math');
@@ -12,12 +10,13 @@ const config = {
   tagline: 'A Graduate-Level Technical Textbook',
   favicon: 'img/favicon.ico',
 
-  // GitHub Pages production URL
   url: 'https://ayeshadev283-max.github.io',
-  baseUrl: '/Physical-AI-Humanoid-Robotics/', // <-- repo name with trailing slash
+  baseUrl: '/Physical-AI-Humanoid-Robotics/', // <-- MUST have trailing slash
 
-  organizationName: 'ayeshadev283-max', // GitHub username
-  projectName: 'Physical-AI-Humanoid-Robotics', // Repo name
+  organizationName: 'ayeshadev283-max',
+  projectName: 'Physical-AI-Humanoid-Robotics',
+  deploymentBranch: 'gh-pages',
+  trailingSlash: false, // optional, cleaner URLs
 
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -30,7 +29,6 @@ const config = {
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
           routeBasePath: '/', // Serve docs at site root
@@ -38,7 +36,7 @@ const config = {
           remarkPlugins: [math],
           rehypePlugins: [katex],
           editUrl:
-            'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/',
+            'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/001-physical-ai-robotics-book/',
         },
         blog: false,
         theme: {
@@ -57,82 +55,66 @@ const config = {
     },
   ],
 
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
-      image: 'img/docusaurus-social-card.jpg',
-      navbar: {
-        title: 'Physical AI & Humanoid Robotics',
-        logo: {
-          alt: 'Book Logo',
-          src: 'img/logo.svg',
-          href: '/',
+  themeConfig: {
+    image: 'img/docusaurus-social-card.jpg',
+    navbar: {
+      title: 'Physical AI & Humanoid Robotics',
+      logo: {
+        alt: 'Book Logo',
+        src: 'img/logo.svg',
+        href: '/Physical-AI-Humanoid-Robotics/', // <-- use baseUrl here
+      },
+      items: [
+        {
+          type: 'docSidebar',
+          sidebarId: 'bookSidebar',
+          position: 'left',
+          label: 'Book',
         },
-        items: [
-          {
-            type: 'docSidebar',
-            sidebarId: 'bookSidebar',
-            position: 'left',
-            label: 'Book',
-          },
-          {
-            href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
-            label: 'GitHub',
-            position: 'right',
-          },
-        ],
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          {
-            title: 'Content',
-            items: [
-              {
-                label: 'Book',
-                to: '/',
-              },
-              {
-                label: 'Bibliography',
-                to: '/references/bibliography',
-              },
-            ],
-          },
-          {
-            title: 'Resources',
-            items: [
-              {
-                label: 'Code Examples',
-                href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/examples',
-              },
-            ],
-          },
-          {
-            title: 'More',
-            items: [
-              {
-                label: 'GitHub',
-                href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
-              },
-            ],
-          },
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Book Contributors. Content licensed under <a href="/LICENSE.content.md" target="_blank">CC BY-SA 4.0</a>. Code examples licensed under <a href="/LICENSE.code.md" target="_blank">Apache 2.0</a>. Built with Docusaurus.`,
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-        additionalLanguages: ['python', 'cpp', 'cmake', 'markup', 'yaml', 'bash', 'json'],
-      },
-      algolia: {
-        appId: 'YOUR_APP_ID',
-        apiKey: 'YOUR_SEARCH_API_KEY',
-        indexName: 'YOUR_INDEX_NAME',
-        contextualSearch: true,
-        searchParameters: {},
-        searchPagePath: 'search',
-      },
-    }),
+        {
+          href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
+          label: 'GitHub',
+          position: 'right',
+        },
+      ],
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        {
+          title: 'Content',
+          items: [
+            { label: 'Book', to: '/Physical-AI-Humanoid-Robotics/' }, // baseUrl
+            { label: 'Bibliography', to: '/Physical-AI-Humanoid-Robotics/references/bibliography' },
+          ],
+        },
+        {
+          title: 'Resources',
+          items: [
+            {
+              label: 'Code Examples',
+              href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/001-physical-ai-robotics-book/examples',
+            },
+          ],
+        },
+        {
+          title: 'More',
+          items: [
+            {
+              label: 'GitHub',
+              href: 'https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics',
+            },
+          ],
+        },
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} Physical AI & Humanoid Robotics Book Contributors. Content licensed under <a href="/Physical-AI-Humanoid-Robotics/LICENSE.content.md" target="_blank">CC BY-SA 4.0</a>. Code examples licensed under <a href="/Physical-AI-Humanoid-Robotics/LICENSE.code.md" target="_blank">Apache 2.0</a>. Built with Docusaurus.`,
+    },
+    prism: {
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme,
+      additionalLanguages: ['python', 'cpp', 'cmake', 'markup', 'yaml', 'bash', 'json'],
+    },
+  },
 
   markdown: {
     mermaid: true,
