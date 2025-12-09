@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en" dir="ltr" class="docs-wrapper plugin-docs plugin-id-default docs-version-current docs-doc-page docs-doc-id-chapters/module-5-capstone/system-overview" data-has-hydrated="false">
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Docusaurus v3.9.2">
+<title data-rh="true">Chapter 1: Autonomous Humanoid System Overview | Physical AI &amp; Humanoid Robotics</title><meta data-rh="true" name="viewport" content="width=device-width,initial-scale=1"><meta data-rh="true" name="twitter:card" content="summary_large_image"><meta data-rh="true" property="og:image" content="https://ayeshadev283-max.github.io/Physical-AI-Humanoid-Robotics/img/docusaurus-social-card.jpg"><meta data-rh="true" name="twitter:image" content="https://ayeshadev283-max.github.io/Physical-AI-Humanoid-Robotics/img/docusaurus-social-card.jpg"><meta data-rh="true" property="og:url" content="https://ayeshadev283-max.github.io/Physical-AI-Humanoid-Robotics/chapters/module-5-capstone/system-overview"><meta data-rh="true" property="og:locale" content="en"><meta data-rh="true" name="docusaurus_locale" content="en"><meta data-rh="true" name="docsearch:language" content="en"><meta data-rh="true" name="docusaurus_version" content="current"><meta data-rh="true" name="docusaurus_tag" content="docs-default-current"><meta data-rh="true" name="docsearch:version" content="current"><meta data-rh="true" name="docsearch:docusaurus_tag" content="docs-default-current"><meta data-rh="true" property="og:title" content="Chapter 1: Autonomous Humanoid System Overview | Physical AI &amp; Humanoid Robotics"><meta data-rh="true" name="description" content="System requirements, architecture, and development roadmap for autonomous humanoid robots"><meta data-rh="true" property="og:description" content="System requirements, architecture, and development roadmap for autonomous humanoid robots"><link data-rh="true" rel="icon" href="/Physical-AI-Humanoid-Robotics/img/favicon.ico"><link data-rh="true" rel="canonical" href="https://ayeshadev283-max.github.io/Physical-AI-Humanoid-Robotics/chapters/module-5-capstone/system-overview"><link data-rh="true" rel="alternate" href="https://ayeshadev283-max.github.io/Physical-AI-Humanoid-Robotics/chapters/module-5-capstone/system-overview" hreflang="en"><link data-rh="true" rel="alternate" href="https://ayeshadev283-max.github.io/Physical-AI-Humanoid-Robotics/chapters/module-5-capstone/system-overview" hreflang="x-default"><link data-rh="true" rel="preconnect" href="https://YOUR_APP_ID-dsn.algolia.net" crossorigin="anonymous"><script data-rh="true" type="application/ld+json">{"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Module 5: Capstone","item":"https://ayeshadev283-max.github.io/Physical-AI-Humanoid-Robotics/module-5-capstone"},{"@type":"ListItem","position":2,"name":"Chapter 1: System Overview","item":"https://ayeshadev283-max.github.io/Physical-AI-Humanoid-Robotics/chapters/module-5-capstone/system-overview"}]}</script><link rel="search" type="application/opensearchdescription+xml" title="Physical AI &amp; Humanoid Robotics" href="/Physical-AI-Humanoid-Robotics/opensearch.xml">
+
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.0/dist/katex.min.css" integrity="sha384-Xi8rHCm/X8argJNqPSLvfTy0o4Oas3E1c+BqccERcXwfDfHHQUzO8+gcpl8G7qKq" crossorigin="anonymous"><link rel="stylesheet" href="/Physical-AI-Humanoid-Robotics/assets/css/styles.bd66b7eb.css">
+<script src="/Physical-AI-Humanoid-Robotics/assets/js/runtime~main.634b67bc.js" defer="defer"></script>
+<script src="/Physical-AI-Humanoid-Robotics/assets/js/main.885e6080.js" defer="defer"></script>
+</head>
+<body class="navigation-with-keyboard">
+<svg style="display: none;"><defs>
+<symbol id="theme-svg-external-link" viewBox="0 0 24 24"><path fill="currentColor" d="M21 13v10h-21v-19h12v2h-10v15h17v-8h2zm3-12h-10.988l4.035 4-6.977 7.07 2.828 2.828 6.977-7.07 4.125 4.172v-11z"/></symbol>
+</defs></svg>
+<script>!function(){var t=function(){try{return new URLSearchParams(window.location.search).get("docusaurus-theme")}catch(t){}}()||function(){try{return window.localStorage.getItem("theme")}catch(t){}}();document.documentElement.setAttribute("data-theme",t||"light"),document.documentElement.setAttribute("data-theme-choice",t||"light")}(),function(){try{const c=new URLSearchParams(window.location.search).entries();for(var[t,e]of c)if(t.startsWith("docusaurus-data-")){var a=t.replace("docusaurus-data-","data-");document.documentElement.setAttribute(a,e)}}catch(t){}}()</script><div id="__docusaurus"><div role="region" aria-label="Skip to main content"><a class="skipToContent_fXgn" href="#__docusaurus_skipToContent_fallback">Skip to main content</a></div><nav aria-label="Main" class="theme-layout-navbar navbar navbar--fixed-top"><div class="navbar__inner"><div class="theme-layout-navbar-left navbar__items"><button aria-label="Toggle navigation bar" aria-expanded="false" class="navbar__toggle clean-btn" type="button"><svg width="30" height="30" viewBox="0 0 30 30" aria-hidden="true"><path stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="2" d="M4 7h22M4 15h22M4 23h22"></path></svg></button><a class="navbar__brand" href="/Physical-AI-Humanoid-Robotics/"><div class="navbar__logo"><img src="/Physical-AI-Humanoid-Robotics/img/logo.svg" alt="Book Logo" class="themedComponent_mlkZ themedComponent--light_NVdE"><img src="/Physical-AI-Humanoid-Robotics/img/logo.svg" alt="Book Logo" class="themedComponent_mlkZ themedComponent--dark_xIcU"></div><b class="navbar__title text--truncate">Physical AI &amp; Humanoid Robotics</b></a><a aria-current="page" class="navbar__item navbar__link navbar__link--active" href="/Physical-AI-Humanoid-Robotics/">Book</a></div><div class="theme-layout-navbar-right navbar__items navbar__items--right"><a href="https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics" target="_blank" rel="noopener noreferrer" class="navbar__item navbar__link">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a><div class="toggle_vylO colorModeToggle_DEke"><button class="clean-btn toggleButton_gllP toggleButtonDisabled_aARS" type="button" disabled="" title="system mode" aria-label="Switch between dark and light mode (currently system mode)"><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP lightToggleIcon_pyhR"><path fill="currentColor" d="M12,9c1.65,0,3,1.35,3,3s-1.35,3-3,3s-3-1.35-3-3S10.35,9,12,9 M12,7c-2.76,0-5,2.24-5,5s2.24,5,5,5s5-2.24,5-5 S14.76,7,12,7L12,7z M2,13l2,0c0.55,0,1-0.45,1-1s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S1.45,13,2,13z M20,13l2,0c0.55,0,1-0.45,1-1 s-0.45-1-1-1l-2,0c-0.55,0-1,0.45-1,1S19.45,13,20,13z M11,2v2c0,0.55,0.45,1,1,1s1-0.45,1-1V2c0-0.55-0.45-1-1-1S11,1.45,11,2z M11,20v2c0,0.55,0.45,1,1,1s1-0.45,1-1v-2c0-0.55-0.45-1-1-1C11.45,19,11,19.45,11,20z M5.99,4.58c-0.39-0.39-1.03-0.39-1.41,0 c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0s0.39-1.03,0-1.41L5.99,4.58z M18.36,16.95 c-0.39-0.39-1.03-0.39-1.41,0c-0.39,0.39-0.39,1.03,0,1.41l1.06,1.06c0.39,0.39,1.03,0.39,1.41,0c0.39-0.39,0.39-1.03,0-1.41 L18.36,16.95z M19.42,5.99c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06c-0.39,0.39-0.39,1.03,0,1.41 s1.03,0.39,1.41,0L19.42,5.99z M7.05,18.36c0.39-0.39,0.39-1.03,0-1.41c-0.39-0.39-1.03-0.39-1.41,0l-1.06,1.06 c-0.39,0.39-0.39,1.03,0,1.41s1.03,0.39,1.41,0L7.05,18.36z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP darkToggleIcon_wfgR"><path fill="currentColor" d="M9.37,5.51C9.19,6.15,9.1,6.82,9.1,7.5c0,4.08,3.32,7.4,7.4,7.4c0.68,0,1.35-0.09,1.99-0.27C17.45,17.19,14.93,19,12,19 c-3.86,0-7-3.14-7-7C5,9.07,6.81,6.55,9.37,5.51z M12,3c-4.97,0-9,4.03-9,9s4.03,9,9,9s9-4.03,9-9c0-0.46-0.04-0.92-0.1-1.36 c-0.98,1.37-2.58,2.26-4.4,2.26c-2.98,0-5.4-2.42-5.4-5.4c0-1.81,0.89-3.42,2.26-4.4C12.92,3.04,12.46,3,12,3L12,3z"></path></svg><svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true" class="toggleIcon_g3eP systemToggleIcon_QzmC"><path fill="currentColor" d="m12 21c4.971 0 9-4.029 9-9s-4.029-9-9-9-9 4.029-9 9 4.029 9 9 9zm4.95-13.95c1.313 1.313 2.05 3.093 2.05 4.95s-0.738 3.637-2.05 4.95c-1.313 1.313-3.093 2.05-4.95 2.05v-14c1.857 0 3.637 0.737 4.95 2.05z"></path></svg></button></div><div class="navbarSearchContainer_Bca1"><button type="button" class="DocSearch DocSearch-Button" aria-label="Search (Meta+k)" aria-keyshortcuts="Meta+k"><span class="DocSearch-Button-Container"><svg width="20" height="20" class="DocSearch-Search-Icon" viewBox="0 0 24 24" aria-hidden="true"><circle cx="11" cy="11" r="8" stroke="currentColor" fill="none" stroke-width="1.4"></circle><path d="m21 21-4.3-4.3" stroke="currentColor" fill="none" stroke-linecap="round" stroke-linejoin="round"></path></svg><span class="DocSearch-Button-Placeholder">Search</span></span><span class="DocSearch-Button-Keys"></span></button></div></div></div><div role="presentation" class="navbar-sidebar__backdrop"></div></nav><div id="__docusaurus_skipToContent_fallback" class="theme-layout-main main-wrapper mainWrapper_z2l0"><div class="docsWrapper_hBAB"><button aria-label="Scroll back to top" class="clean-btn theme-back-to-top-button backToTopButton_sjWU" type="button"></button><div class="docRoot_UBD9"><aside class="theme-doc-sidebar-container docSidebarContainer_YfHR"><div class="sidebarViewport_aRkj"><div class="sidebar_njMd"><nav aria-label="Docs sidebar" class="menu thin-scrollbar menu_SIkG"><ul class="theme-doc-sidebar-menu menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-1 menu__list-item"><a class="menu__link" href="/Physical-AI-Humanoid-Robotics/"><span title="Introduction" class="linkLabel_WmDU">Introduction</span></a></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/Physical-AI-Humanoid-Robotics/module-0-foundations"><span title="Module 0: Physical AI Foundations" class="categoryLinkLabel_W154">Module 0: Physical AI Foundations</span></a><button aria-label="Expand sidebar category &#x27;Module 0: Physical AI Foundations&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/Physical-AI-Humanoid-Robotics/module-1-ros2"><span title="Module 1: ROS 2" class="categoryLinkLabel_W154">Module 1: ROS 2</span></a><button aria-label="Expand sidebar category &#x27;Module 1: ROS 2&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/Physical-AI-Humanoid-Robotics/module-2-digital-twin"><span title="Module 2: Digital Twin" class="categoryLinkLabel_W154">Module 2: Digital Twin</span></a><button aria-label="Expand sidebar category &#x27;Module 2: Digital Twin&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/Physical-AI-Humanoid-Robotics/module-3-isaac"><span title="Module 3: NVIDIA Isaac" class="categoryLinkLabel_W154">Module 3: NVIDIA Isaac</span></a><button aria-label="Expand sidebar category &#x27;Module 3: NVIDIA Isaac&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/Physical-AI-Humanoid-Robotics/module-4-vla"><span title="Module 4: VLA Models" class="categoryLinkLabel_W154">Module 4: VLA Models</span></a><button aria-label="Expand sidebar category &#x27;Module 4: VLA Models&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist menu__link--active" href="/Physical-AI-Humanoid-Robotics/module-5-capstone"><span title="Module 5: Capstone" class="categoryLinkLabel_W154">Module 5: Capstone</span></a><button aria-label="Collapse sidebar category &#x27;Module 5: Capstone&#x27;" aria-expanded="true" type="button" class="clean-btn menu__caret"></button></div><ul class="menu__list"><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link menu__link--active" aria-current="page" tabindex="0" href="/Physical-AI-Humanoid-Robotics/chapters/module-5-capstone/system-overview"><span title="Chapter 1: System Overview" class="linkLabel_WmDU">Chapter 1: System Overview</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Physical-AI-Humanoid-Robotics/chapters/module-5-capstone/perception-stack"><span title="Chapter 2: Perception Stack" class="linkLabel_WmDU">Chapter 2: Perception Stack</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Physical-AI-Humanoid-Robotics/chapters/module-5-capstone/control-stack"><span title="Chapter 3: Control Stack" class="linkLabel_WmDU">Chapter 3: Control Stack</span></a></li><li class="theme-doc-sidebar-item-link theme-doc-sidebar-item-link-level-2 menu__list-item"><a class="menu__link" tabindex="0" href="/Physical-AI-Humanoid-Robotics/chapters/module-5-capstone/vla-autonomy"><span title="Chapter 4: VLA Autonomy" class="linkLabel_WmDU">Chapter 4: VLA Autonomy</span></a></li></ul></li><li class="theme-doc-sidebar-item-category theme-doc-sidebar-item-category-level-1 menu__list-item menu__list-item--collapsed"><div class="menu__list-item-collapsible"><a class="categoryLink_byQd menu__link menu__link--sublist" href="/Physical-AI-Humanoid-Robotics/appendices"><span title="Appendices" class="categoryLinkLabel_W154">Appendices</span></a><button aria-label="Expand sidebar category &#x27;Appendices&#x27;" aria-expanded="false" type="button" class="clean-btn menu__caret"></button></div></li></ul></nav></div></div></aside><main class="docMainContainer_TBSr"><div class="container padding-top--md padding-bottom--lg"><div class="row"><div class="col docItemCol_VOVn"><div class="docItemContainer_Djhp"><article><nav class="theme-doc-breadcrumbs breadcrumbsContainer_Z_bl" aria-label="Breadcrumbs"><ul class="breadcrumbs"><li class="breadcrumbs__item"><a aria-label="Home page" class="breadcrumbs__link" href="/Physical-AI-Humanoid-Robotics/"><svg viewBox="0 0 24 24" class="breadcrumbHomeIcon_YNFT"><path d="M10 19v-5h4v5c0 .55.45 1 1 1h3c.55 0 1-.45 1-1v-7h1.7c.46 0 .68-.57.33-.87L12.67 3.6c-.38-.34-.96-.34-1.34 0l-8.36 7.53c-.34.3-.13.87.33.87H5v7c0 .55.45 1 1 1h3c.55 0 1-.45 1-1z" fill="currentColor"></path></svg></a></li><li class="breadcrumbs__item"><a class="breadcrumbs__link" href="/Physical-AI-Humanoid-Robotics/module-5-capstone"><span>Module 5: Capstone</span></a></li><li class="breadcrumbs__item breadcrumbs__item--active"><span class="breadcrumbs__link">Chapter 1: System Overview</span></li></ul></nav><div class="tocCollapsible_ETCw theme-doc-toc-mobile tocMobile_ITEo"><button type="button" class="clean-btn tocCollapsibleButton_TO0P">On this page</button></div><div class="theme-doc-markdown markdown"><header><h1>Chapter 1: Autonomous Humanoid System Overview</h1></header>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="learning-objectives">Learning Objectives<a href="#learning-objectives" class="hash-link" aria-label="Direct link to Learning Objectives" title="Direct link to Learning Objectives" translate="no">​</a></h2>
+<ol>
+<li class="">Define system requirements for an autonomous humanoid robot</li>
+<li class="">Design complete system architecture (hardware + software)</li>
+<li class="">Create phased development roadmap for implementation</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="11-requirements-analysis">1.1 Requirements Analysis<a href="#11-requirements-analysis" class="hash-link" aria-label="Direct link to 1.1 Requirements Analysis" title="Direct link to 1.1 Requirements Analysis" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="use-cases">Use Cases<a href="#use-cases" class="hash-link" aria-label="Direct link to Use Cases" title="Direct link to Use Cases" translate="no">​</a></h3>
+<p><strong>Primary Use Case</strong>: Autonomous household assistant</p>
+<p><strong>Scenarios</strong>:</p>
+<ol>
+<li class="">
+<p><strong>Kitchen Assistant</strong>: &quot;Fetch me a drink from the fridge&quot;</p>
+<ul>
+<li class="">Navigate to kitchen</li>
+<li class="">Open refrigerator door</li>
+<li class="">Identify and grasp drink</li>
+<li class="">Navigate back to user</li>
+<li class="">Hand over drink</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Cleaning Helper</strong>: &quot;Clean up the toys from the floor&quot;</p>
+<ul>
+<li class="">Navigate to living room</li>
+<li class="">Detect toys on floor (vision)</li>
+<li class="">Pick up each toy</li>
+<li class="">Place in designated container</li>
+<li class="">Return to charging station</li>
+</ul>
+</li>
+<li class="">
+<p><strong>Object Delivery</strong>: &quot;Bring me the book from the shelf&quot;</p>
+<ul>
+<li class="">Parse natural language instruction</li>
+<li class="">Navigate to bookshelf</li>
+<li class="">Identify target book (visual + semantic understanding)</li>
+<li class="">Grasp and retrieve</li>
+<li class="">Deliver to user</li>
+</ul>
+</li>
+</ol>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="functional-requirements">Functional Requirements<a href="#functional-requirements" class="hash-link" aria-label="Direct link to Functional Requirements" title="Direct link to Functional Requirements" translate="no">​</a></h3>
+<p><strong>FR1: Locomotion</strong></p>
+<ul>
+<li class="">Walk on flat surfaces at 0.5 m/s (minimum)</li>
+<li class="">Climb stairs (max height: 20cm per step)</li>
+<li class="">Maintain balance during manipulation tasks</li>
+<li class="">Navigate around obstacles (dynamic path planning)</li>
+</ul>
+<p><strong>FR2: Manipulation</strong></p>
+<ul>
+<li class="">Grasp objects (0.1-2 kg weight range)</li>
+<li class="">Dual-arm coordination (e.g., open door while holding object)</li>
+<li class="">Fine manipulation (e.g., press buttons, turn knobs)</li>
+<li class="">Tool use (e.g., use broom, open drawers)</li>
+</ul>
+<p><strong>FR3: Perception</strong></p>
+<ul>
+<li class="">3D environment mapping (SLAM)</li>
+<li class="">Object detection and recognition (100+ common household objects)</li>
+<li class="">Human detection and tracking</li>
+<li class="">Depth estimation for grasp planning</li>
+</ul>
+<p><strong>FR4: Autonomy</strong></p>
+<ul>
+<li class="">Natural language command understanding</li>
+<li class="">Task planning from high-level goals</li>
+<li class="">Obstacle avoidance and replanning</li>
+<li class="">Error recovery (e.g., retry failed grasp)</li>
+</ul>
+<p><strong>FR5: Safety</strong></p>
+<ul>
+<li class="">Collision avoidance (humans, furniture)</li>
+<li class="">Compliant control (soft contact with environment)</li>
+<li class="">Emergency stop capability</li>
+<li class="">Fall detection and safe shutdown</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="non-functional-requirements">Non-Functional Requirements<a href="#non-functional-requirements" class="hash-link" aria-label="Direct link to Non-Functional Requirements" title="Direct link to Non-Functional Requirements" translate="no">​</a></h3>
+<p><strong>NFR1: Performance</strong></p>
+<ul>
+<li class="">End-to-end task latency: <code>&lt;10s</code> (from command to action start)</li>
+<li class="">Real-time control frequency: 100 Hz (low-level), 10 Hz (high-level)</li>
+<li class="">Perception update rate: 30 Hz (vision), 100 Hz (IMU)</li>
+</ul>
+<p><strong>NFR2: Reliability</strong></p>
+<ul>
+<li class="">Task success rate: <code>&gt;80%</code> on known tasks</li>
+<li class="">MTBF (Mean Time Between Failures): <code>&gt;4 hours</code> continuous operation</li>
+<li class="">Battery life: <code>&gt;2 hours</code> active use</li>
+</ul>
+<p><strong>NFR3: Usability</strong></p>
+<ul>
+<li class="">Natural language interface (no programming required)</li>
+<li class="">One-button start/stop</li>
+<li class="">Audio/visual feedback (status indicators)</li>
+</ul>
+<p><strong>NFR4: Cost</strong></p>
+<ul>
+<li class="">Target: <code>&lt;$50k</code> total system cost</li>
+<li class="">Compute: Jetson Orin (edge AI) + optional cloud offload</li>
+</ul>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="system-specifications">System Specifications<a href="#system-specifications" class="hash-link" aria-label="Direct link to System Specifications" title="Direct link to System Specifications" translate="no">​</a></h3>
+<table><thead><tr><th>Component</th><th>Specification</th></tr></thead><tbody><tr><td><strong>Height</strong></td><td>150-180 cm (human-scale)</td></tr><tr><td><strong>Weight</strong></td><td>40-60 kg</td></tr><tr><td><strong>DOF</strong></td><td>30+ (12 legs, 14 arms, 3 torso, 1+ head)</td></tr><tr><td><strong>Payload</strong></td><td>5 kg per arm</td></tr><tr><td><strong>Speed</strong></td><td>0.5 m/s walking, 1.0 m/s max</td></tr><tr><td><strong>Battery</strong></td><td>48V LiFePO4, 10Ah (2 hrs runtime)</td></tr><tr><td><strong>Compute</strong></td><td>Jetson Orin (275 TOPS AI), ARM Cortex (real-time control)</td></tr><tr><td><strong>Sensors</strong></td><td>RGB-D cameras (2), IMU (1), Force/torque (hands, feet)</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="12-system-architecture">1.2 System Architecture<a href="#12-system-architecture" class="hash-link" aria-label="Direct link to 1.2 System Architecture" title="Direct link to 1.2 System Architecture" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="hardware-architecture">Hardware Architecture<a href="#hardware-architecture" class="hash-link" aria-label="Direct link to Hardware Architecture" title="Direct link to Hardware Architecture" translate="no">​</a></h3>
+<!-- -->
+<p><strong>Figure 1.1</strong>: Hardware architecture showing sensor inputs, compute nodes (Jetson for AI, MCU for real-time control), actuators, and power distribution.</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="software-architecture">Software Architecture<a href="#software-architecture" class="hash-link" aria-label="Direct link to Software Architecture" title="Direct link to Software Architecture" translate="no">​</a></h3>
+<!-- -->
+<p><strong>Figure 1.2</strong>: Software architecture with three control layers: high-level (VLA + planning), mid-level (motion/path planning), low-level (whole-body + joint control).</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="system-integration">System Integration<a href="#system-integration" class="hash-link" aria-label="Direct link to System Integration" title="Direct link to System Integration" translate="no">​</a></h3>
+<p><strong>ROS 2 Communication</strong>:</p>
+<div class="language-python codeBlockContainer_Ckt0 theme-code-block" style="--prism-color:#393A34;--prism-background-color:#f6f8fa"><div class="codeBlockContent_QJqH"><pre tabindex="0" class="prism-code language-python codeBlock_bY9V thin-scrollbar" style="color:#393A34;background-color:#f6f8fa"><code class="codeBlockLines_e6Vv"><span class="token-line" style="color:#393A34"><span class="token comment" style="color:#999988;font-style:italic"># High-level VLA node publishes tasks</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">/</span><span class="token plain">vla</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">task_command </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">std_msgs</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">String</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Task planner decomposes into primitives</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">/</span><span class="token plain">planner</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">motion_goal </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">geometry_msgs</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">PoseStamped</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">/</span><span class="token plain">planner</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">navigation_goal </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">nav_msgs</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">Path</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Mid-level planners publish trajectories</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">/</span><span class="token plain">motion</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">joint_trajectory </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">trajectory_msgs</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">JointTrajectory</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">/</span><span class="token plain">navigation</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">cmd_vel </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">geometry_msgs</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">Twist</span><span class="token punctuation" style="color:#393A34">)</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain" style="display:inline-block"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token comment" style="color:#999988;font-style:italic"># Low-level controller executes</span><span class="token plain"></span><br></span><span class="token-line" style="color:#393A34"><span class="token plain"></span><span class="token operator" style="color:#393A34">/</span><span class="token plain">joint_commands </span><span class="token punctuation" style="color:#393A34">(</span><span class="token plain">control_msgs</span><span class="token operator" style="color:#393A34">/</span><span class="token plain">JointJog</span><span class="token punctuation" style="color:#393A34">)</span><br></span></code></pre></div></div>
+<p><strong>Data Flow Example</strong> (Fetch drink task):</p>
+<ol>
+<li class="">User: &quot;Fetch me a drink&quot; (voice)</li>
+<li class="">VLA: Parse → &quot;navigate(kitchen) + grasp(drink) + navigate(user)&quot;</li>
+<li class="">Task Planner: Execute navigation → Execute grasp → Execute return</li>
+<li class="">Motion Planner: Generate arm trajectory for grasp</li>
+<li class="">Path Planner: Generate walking path to kitchen</li>
+<li class="">Whole-Body Controller: Coordinate arms + legs</li>
+<li class="">Joint Controllers: Execute motor commands</li>
+</ol>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="13-development-roadmap">1.3 Development Roadmap<a href="#13-development-roadmap" class="hash-link" aria-label="Direct link to 1.3 Development Roadmap" title="Direct link to 1.3 Development Roadmap" translate="no">​</a></h2>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-1-simulation-setup-weeks-1-2">Phase 1: Simulation Setup (Weeks 1-2)<a href="#phase-1-simulation-setup-weeks-1-2" class="hash-link" aria-label="Direct link to Phase 1: Simulation Setup (Weeks 1-2)" title="Direct link to Phase 1: Simulation Setup (Weeks 1-2)" translate="no">​</a></h3>
+<p><strong>Goal</strong>: Virtual twin in Isaac Sim</p>
+<p><strong>Tasks</strong>:</p>
+<ul>
+<li class="">Import humanoid URDF (or use pre-built model like G1, Unitree H1)</li>
+<li class="">Configure PhysX physics (realistic contacts, friction)</li>
+<li class="">Add environment (kitchen, living room)</li>
+<li class="">Integrate ROS 2 bridge</li>
+</ul>
+<p><strong>Deliverable</strong>: Teleoperable humanoid in simulation</p>
+<p><strong>Validation</strong>: Walk 10 meters, grasp objects, avoid obstacles</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-2-perception-stack-weeks-3-4">Phase 2: Perception Stack (Weeks 3-4)<a href="#phase-2-perception-stack-weeks-3-4" class="hash-link" aria-label="Direct link to Phase 2: Perception Stack (Weeks 3-4)" title="Direct link to Phase 2: Perception Stack (Weeks 3-4)" translate="no">​</a></h3>
+<p><strong>Goal</strong>: Real-time environment understanding</p>
+<p><strong>Tasks</strong>:</p>
+<ul>
+<li class="">Deploy Isaac ROS Visual SLAM on Jetson</li>
+<li class="">Integrate YOLOv8 for object detection</li>
+<li class="">Implement depth-based grasp pose estimation</li>
+<li class="">Fuse IMU + camera for state estimation</li>
+</ul>
+<p><strong>Deliverable</strong>: Perception pipeline (30 Hz)</p>
+<p><strong>Validation</strong>: Detect 10 objects, map 50m² environment, localize with <code>&lt;5cm</code> error</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-3-base-control-weeks-5-6">Phase 3: Base Control (Weeks 5-6)<a href="#phase-3-base-control-weeks-5-6" class="hash-link" aria-label="Direct link to Phase 3: Base Control (Weeks 5-6)" title="Direct link to Phase 3: Base Control (Weeks 5-6)" translate="no">​</a></h3>
+<p><strong>Goal</strong>: Stable locomotion + manipulation</p>
+<p><strong>Tasks</strong>:</p>
+<ul>
+<li class="">Implement balance controller (ZMP-based)</li>
+<li class="">Train RL policy for walking in Isaac Gym (100k steps)</li>
+<li class="">Fine-tune on Isaac Sim with randomization</li>
+<li class="">Implement dual-arm manipulation primitives</li>
+</ul>
+<p><strong>Deliverable</strong>: Walk + grasp controller</p>
+<p><strong>Validation</strong>: Walk 20m without falling, grasp 5/5 objects in sim</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-4-vla-integration-weeks-7-8">Phase 4: VLA Integration (Weeks 7-8)<a href="#phase-4-vla-integration-weeks-7-8" class="hash-link" aria-label="Direct link to Phase 4: VLA Integration (Weeks 7-8)" title="Direct link to Phase 4: VLA Integration (Weeks 7-8)" translate="no">​</a></h3>
+<p><strong>Goal</strong>: Language-conditioned autonomy</p>
+<p><strong>Tasks</strong>:</p>
+<ul>
+<li class="">Fine-tune OpenVLA on humanoid tasks (1k demos)</li>
+<li class="">Integrate VLA with task planner (behavior tree)</li>
+<li class="">Implement safety wrappers (collision, workspace limits)</li>
+<li class="">Deploy on Jetson Orin (optimize for <code>&lt;50ms</code> latency)</li>
+</ul>
+<p><strong>Deliverable</strong>: End-to-end autonomous system (sim)</p>
+<p><strong>Validation</strong>: Complete 3 tasks: fetch, place, navigate</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-5-sim-to-real-transfer-weeks-9-10">Phase 5: Sim-to-Real Transfer (Weeks 9-10)<a href="#phase-5-sim-to-real-transfer-weeks-9-10" class="hash-link" aria-label="Direct link to Phase 5: Sim-to-Real Transfer (Weeks 9-10)" title="Direct link to Phase 5: Sim-to-Real Transfer (Weeks 9-10)" translate="no">​</a></h3>
+<p><strong>Goal</strong>: Deploy on real hardware</p>
+<p><strong>Tasks</strong>:</p>
+<ul>
+<li class="">System identification (measure real joint dynamics)</li>
+<li class="">Domain randomization (10x varied sim environments)</li>
+<li class="">Collect real-world fine-tuning data (100 demos)</li>
+<li class="">Progressive deployment (sim → table-top → full robot)</li>
+</ul>
+<p><strong>Deliverable</strong>: Real robot executing simple tasks</p>
+<p><strong>Validation</strong>: 50% success on fetch task (real world)</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="phase-6-iteration-and-scaling-weeks-11-12">Phase 6: Iteration and Scaling (Weeks 11-12)<a href="#phase-6-iteration-and-scaling-weeks-11-12" class="hash-link" aria-label="Direct link to Phase 6: Iteration and Scaling (Weeks 11-12)" title="Direct link to Phase 6: Iteration and Scaling (Weeks 11-12)" translate="no">​</a></h3>
+<p><strong>Goal</strong>: Improve robustness and generalization</p>
+<p><strong>Tasks</strong>:</p>
+<ul>
+<li class="">Failure analysis (log 100 attempts)</li>
+<li class="">Update VLA with corrective demos (DAgger)</li>
+<li class="">Expand object set (100 → 200 objects)</li>
+<li class="">Multi-task evaluation (5 different tasks)</li>
+</ul>
+<p><strong>Deliverable</strong>: Production-ready system</p>
+<p><strong>Validation</strong>: 80% success across 5 tasks, <code>&lt;5min</code> per task</p>
+<h3 class="anchor anchorTargetStickyNavbar_Vzrq" id="risk-mitigation">Risk Mitigation<a href="#risk-mitigation" class="hash-link" aria-label="Direct link to Risk Mitigation" title="Direct link to Risk Mitigation" translate="no">​</a></h3>
+<table><thead><tr><th>Risk</th><th>Impact</th><th>Mitigation</th></tr></thead><tbody><tr><td><strong>Hardware failure</strong></td><td>High</td><td>Redundant sensors, modular design, spare parts</td></tr><tr><td><strong>Sim-to-real gap</strong></td><td>High</td><td>Extensive randomization, real-world fine-tuning, progressive transfer</td></tr><tr><td><strong>VLA latency</strong></td><td>Medium</td><td>Quantization (INT8), TensorRT, model distillation</td></tr><tr><td><strong>Battery life</strong></td><td>Medium</td><td>Power-efficient hardware, sleep modes, hot-swappable batteries</td></tr><tr><td><strong>Safety incidents</strong></td><td>Critical</td><td>Multi-layer safety (software + hardware e-stop), human-in-loop testing</td></tr></tbody></table>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="exercises">Exercises<a href="#exercises" class="hash-link" aria-label="Direct link to Exercises" title="Direct link to Exercises" translate="no">​</a></h2>
+<p><strong>Exercise 1.1</strong>: Requirements Specification</p>
+<ul>
+<li class="">Define requirements for a warehouse robot (vs household)</li>
+<li class="">List 5 functional requirements specific to warehouse tasks</li>
+<li class="">Specify non-functional requirements (speed, payload, uptime)</li>
+</ul>
+<p><strong>Exercise 1.2</strong>: Hardware Selection</p>
+<ul>
+<li class="">Choose sensors for outdoor humanoid (vs indoor)</li>
+<li class="">Select compute platform (Jetson Orin vs AGX Xavier vs cloud)</li>
+<li class="">Justify choices with performance/cost tradeoffs</li>
+</ul>
+<p><strong>Exercise 1.3</strong>: Software Architecture Design</p>
+<ul>
+<li class="">Design software stack for a quadruped robot (vs humanoid)</li>
+<li class="">Identify differences in control layers</li>
+<li class="">Draw architecture diagram (Mermaid or similar)</li>
+</ul>
+<p><strong>Exercise 1.4</strong>: Development Planning</p>
+<ul>
+<li class="">Create 8-week roadmap for your capstone project</li>
+<li class="">Define milestones and validation criteria</li>
+<li class="">Identify top 3 risks and mitigation strategies</li>
+</ul>
+<h2 class="anchor anchorTargetStickyNavbar_Vzrq" id="summary">Summary<a href="#summary" class="hash-link" aria-label="Direct link to Summary" title="Direct link to Summary" translate="no">​</a></h2>
+<p><strong>Requirements</strong>: Household assistant with locomotion, manipulation, perception, autonomy, and safety
+<strong>Architecture</strong>: Hardware (sensors, compute, actuators, power) + Software (3-layer control hierarchy)
+<strong>Roadmap</strong>: 12-week phased development (sim → perception → control → VLA → real → iteration)</p>
+<p><strong>Next</strong>: Chapter 2 covers perception stack implementation (SLAM, object detection, state estimation).</p></div><footer class="theme-doc-footer docusaurus-mt-lg"><div class="row margin-top--sm theme-doc-footer-tags-row"><div class="col"><b>Tags:</b><ul class="tags_jXut padding--none margin-left--sm"><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/Physical-AI-Humanoid-Robotics/tags/capstone">capstone</a></li><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/Physical-AI-Humanoid-Robotics/tags/system-architecture">system-architecture</a></li><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/Physical-AI-Humanoid-Robotics/tags/humanoid">humanoid</a></li><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/Physical-AI-Humanoid-Robotics/tags/requirements">requirements</a></li><li class="tag_QGVx"><a rel="tag" class="tag_zVej tagRegular_sFm0" href="/Physical-AI-Humanoid-Robotics/tags/roadmap">roadmap</a></li></ul></div></div><div class="row margin-top--sm theme-doc-footer-edit-meta-row"><div class="col noPrint_WFHX"><a href="https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/docs/chapters/module-5-capstone/01-system-overview.md" target="_blank" rel="noopener noreferrer" class="theme-edit-this-page"><svg fill="currentColor" height="20" width="20" viewBox="0 0 40 40" class="iconEdit_Z9Sw" aria-hidden="true"><g><path d="m34.5 11.7l-3 3.1-6.3-6.3 3.1-3q0.5-0.5 1.2-0.5t1.1 0.5l3.9 3.9q0.5 0.4 0.5 1.1t-0.5 1.2z m-29.5 17.1l18.4-18.5 6.3 6.3-18.4 18.4h-6.3v-6.2z"></path></g></svg>Edit this page</a></div><div class="col lastUpdated_JAkA"></div></div></footer></article><nav class="docusaurus-mt-lg pagination-nav" aria-label="Docs pages"><a class="pagination-nav__link pagination-nav__link--prev" href="/Physical-AI-Humanoid-Robotics/module-5-capstone"><div class="pagination-nav__sublabel">Previous</div><div class="pagination-nav__label">Module 5: Capstone</div></a><a class="pagination-nav__link pagination-nav__link--next" href="/Physical-AI-Humanoid-Robotics/chapters/module-5-capstone/perception-stack"><div class="pagination-nav__sublabel">Next</div><div class="pagination-nav__label">Chapter 2: Perception Stack</div></a></nav></div></div><div class="col col--3"><div class="tableOfContents_bqdL thin-scrollbar theme-doc-toc-desktop"><ul class="table-of-contents table-of-contents__left-border"><li><a href="#learning-objectives" class="table-of-contents__link toc-highlight">Learning Objectives</a></li><li><a href="#11-requirements-analysis" class="table-of-contents__link toc-highlight">1.1 Requirements Analysis</a><ul><li><a href="#use-cases" class="table-of-contents__link toc-highlight">Use Cases</a></li><li><a href="#functional-requirements" class="table-of-contents__link toc-highlight">Functional Requirements</a></li><li><a href="#non-functional-requirements" class="table-of-contents__link toc-highlight">Non-Functional Requirements</a></li><li><a href="#system-specifications" class="table-of-contents__link toc-highlight">System Specifications</a></li></ul></li><li><a href="#12-system-architecture" class="table-of-contents__link toc-highlight">1.2 System Architecture</a><ul><li><a href="#hardware-architecture" class="table-of-contents__link toc-highlight">Hardware Architecture</a></li><li><a href="#software-architecture" class="table-of-contents__link toc-highlight">Software Architecture</a></li><li><a href="#system-integration" class="table-of-contents__link toc-highlight">System Integration</a></li></ul></li><li><a href="#13-development-roadmap" class="table-of-contents__link toc-highlight">1.3 Development Roadmap</a><ul><li><a href="#phase-1-simulation-setup-weeks-1-2" class="table-of-contents__link toc-highlight">Phase 1: Simulation Setup (Weeks 1-2)</a></li><li><a href="#phase-2-perception-stack-weeks-3-4" class="table-of-contents__link toc-highlight">Phase 2: Perception Stack (Weeks 3-4)</a></li><li><a href="#phase-3-base-control-weeks-5-6" class="table-of-contents__link toc-highlight">Phase 3: Base Control (Weeks 5-6)</a></li><li><a href="#phase-4-vla-integration-weeks-7-8" class="table-of-contents__link toc-highlight">Phase 4: VLA Integration (Weeks 7-8)</a></li><li><a href="#phase-5-sim-to-real-transfer-weeks-9-10" class="table-of-contents__link toc-highlight">Phase 5: Sim-to-Real Transfer (Weeks 9-10)</a></li><li><a href="#phase-6-iteration-and-scaling-weeks-11-12" class="table-of-contents__link toc-highlight">Phase 6: Iteration and Scaling (Weeks 11-12)</a></li><li><a href="#risk-mitigation" class="table-of-contents__link toc-highlight">Risk Mitigation</a></li></ul></li><li><a href="#exercises" class="table-of-contents__link toc-highlight">Exercises</a></li><li><a href="#summary" class="table-of-contents__link toc-highlight">Summary</a></li></ul></div></div></div></div></main></div></div></div><footer class="theme-layout-footer footer footer--dark"><div class="container container-fluid"><div class="row footer__links"><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Content</div><ul class="footer__items clean-list"><li class="footer__item"><a class="footer__link-item" href="/Physical-AI-Humanoid-Robotics/">Book</a></li><li class="footer__item"><a class="footer__link-item" href="/Physical-AI-Humanoid-Robotics/references/bibliography">Bibliography</a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">Resources</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics/tree/main/examples" target="_blank" rel="noopener noreferrer" class="footer__link-item">Code Examples<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div><div class="theme-layout-footer-column col footer__col"><div class="footer__title">More</div><ul class="footer__items clean-list"><li class="footer__item"><a href="https://github.com/ayeshadev283-max/Physical-AI-Humanoid-Robotics" target="_blank" rel="noopener noreferrer" class="footer__link-item">GitHub<svg width="13.5" height="13.5" aria-label="(opens in new tab)" class="iconExternalLink_nPIU"><use href="#theme-svg-external-link"></use></svg></a></li></ul></div></div><div class="footer__bottom text--center"><div class="footer__copyright">Copyright © 2025 Physical AI & Humanoid Robotics Book Contributors. Content licensed under <a href="/LICENSE.content.md" target="_blank">CC BY-SA 4.0</a>. Code examples licensed under <a href="/LICENSE.code.md" target="_blank">Apache 2.0</a>. Built with Docusaurus.</div></div></div></footer></div>
+</body>
+</html>
