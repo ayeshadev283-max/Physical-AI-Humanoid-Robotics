@@ -4,6 +4,7 @@ title: "Chapter 4: Locomotion and Motor Control"
 description: Locomotion strategies, kinematics, and balance
 tags: [locomotion, motor-control, kinematics, balance]
 ---
+nimport { ChatbotWidget } from '@site/src/components/ChatbotWidget';
 
 # Chapter 4: Locomotion and Motor Control
 
@@ -148,3 +149,18 @@ y = L1*sin(θ1) + L2*sin(θ1+θ2)
 
 **Exercise 4.4**: Research one of the locomotion robots mentioned (Spot, ANYmal, Handle, or Atlas) and write a technical summary including: degrees of freedom, actuation type, key sensors, and one example application where its locomotion strategy provides a unique advantage.
 
+
+---
+
+## Ask Questions About This Chapter
+
+Have questions about the content? Use our AI-powered chatbot to get instant answers based on the book material:
+
+<ChatbotWidget 
+  bookId="physical-ai-robotics" 
+  chapterNumber={0} 
+/>
+
+:::tip
+The chatbot provides answers grounded in the book content with source references. Try asking questions about the concepts covered in this chapter.
+:::

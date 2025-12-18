@@ -178,3 +178,5 @@ Evolution: Industrial robots → planners → reactive → probabilistic → dee
 
 **Exercise 1.3**: Identify a current limitation of Physical AI (from Section 1.3) and propose one research direction or engineering approach that could address it. Justify your proposal with technical reasoning.
 
+
+---

@@ -22,19 +22,28 @@
     "@docusaurus/preset-classic": "^3.0.0",
     "@docusaurus/theme-mermaid": "^3.9.2",
     "@mdx-js/react": "^3.0.0",
+    "axios": "^1.13.2",
     "bibtex-parse-js": "^0.0.24",
     "clsx": "^2.0.0",
     "katex": "^0.16.25",
     "prism-react-renderer": "^2.1.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-markdown": "^10.1.0",
     "rehype-citation": "^2.3.1",
     "rehype-katex": "^7.0.1",
     "remark-math": "^6.0.0"
   },
   "devDependencies": {
     "@docusaurus/module-type-aliases": "^3.0.0",
-    "@docusaurus/types": "^3.0.0"
+    "@docusaurus/types": "^3.0.0",
+    "@testing-library/jest-dom": "^6.9.1",
+    "@testing-library/react": "^16.3.0",
+    "@types/jest": "^30.0.0",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19.2.3",
+    "jest": "^30.2.0",
+    "jest-axe": "^10.0.0"
   },
   "browserslist": {
     "production": [

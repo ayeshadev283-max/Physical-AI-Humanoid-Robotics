@@ -4,6 +4,7 @@ title: "Chapter 2: Embodied Intelligence"
 description: How physical bodies enable and shape intelligence
 tags: [embodied-cognition, morphological-computation, developmental-robotics]
 ---
+nimport { ChatbotWidget } from '@site/src/components/ChatbotWidget';
 
 # Chapter 2: Embodied Intelligence
 
@@ -163,3 +164,18 @@ Embodiment is not optional—bodies shape intelligence.
 
 **Exercise 2.3**: Compare motor babbling in infants with random exploration in reinforcement learning agents. What are the similarities and differences in terms of learning objectives and outcomes?
 
+
+---
+
+## Ask Questions About This Chapter
+
+Have questions about the content? Use our AI-powered chatbot to get instant answers based on the book material:
+
+<ChatbotWidget 
+  bookId="physical-ai-robotics" 
+  chapterNumber={0} 
+/>
+
+:::tip
+The chatbot provides answers grounded in the book content with source references. Try asking questions about the concepts covered in this chapter.
+:::

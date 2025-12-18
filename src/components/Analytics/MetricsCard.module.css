@@ -1,0 +1,113 @@
+/**
+ * MetricsCard styles
+ */
+
+.card {
+  background: var(--ifm-card-background-color, #fff);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  padding: 1.5rem;
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+  height: 100%;
+}
+
+.card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  transform: translateY(-2px);
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.icon {
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.title {
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-700);
+  margin: 0;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.body {
+  display: flex;
+  align-items: baseline;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.value {
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--ifm-color-primary);
+  line-height: 1;
+}
+
+.trend {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  font-size: 0.875rem;
+  font-weight: 600;
+  padding: 0.25rem 0.5rem;
+  border-radius: 4px;
+}
+
+.trendPositive {
+  color: var(--ifm-color-success-dark);
+  background: var(--ifm-color-success-contrast-background, #e6f7e6);
+}
+
+.trendNegative {
+  color: var(--ifm-color-danger-dark);
+  background: var(--ifm-color-danger-contrast-background, #ffe6e6);
+}
+
+.trendIcon {
+  font-size: 1rem;
+  line-height: 1;
+}
+
+.trendValue {
+  line-height: 1;
+}
+
+.description {
+  font-size: 0.875rem;
+  color: var(--ifm-color-emphasis-600);
+  margin: 0.5rem 0 0;
+  line-height: 1.4;
+}
+
+/* Dark mode support */
+[data-theme='dark'] .card {
+  background: var(--ifm-card-background-color);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .card:hover {
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+  .card {
+    padding: 1rem;
+  }
+
+  .value {
+    font-size: 1.5rem;
+  }
+
+  .title {
+    font-size: 0.75rem;
+  }
+}

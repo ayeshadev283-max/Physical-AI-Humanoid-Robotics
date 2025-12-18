@@ -253,24 +253,59 @@ cite {
   .DocSearch {
     display: none;
   }
-  
+
   .markdown {
     font-size: 12pt;
     line-height: 1.6;
   }
-  
+
   .markdown h1 {
     page-break-before: always;
   }
-  
+
   .markdown h2,
   .markdown h3 {
     page-break-after: avoid;
   }
-  
+
   pre,
   .mermaid,
   figure {
     page-break-inside: avoid;
   }
+}
+
+/* ============================================
+   Floating Chatbot Global Overrides
+   Ensures chatbot button stays fixed and visible
+   ============================================ */
+
+/* Ensure no parent containers interfere with fixed positioning */
+html,
+body {
+  position: relative;
+}
+
+/* Override any potential layout constraints */
+#__docusaurus {
+  position: relative;
+}
+
+/* Ensure body doesn't hide overflow on mobile */
+body {
+  overflow-x: hidden;
+  overflow-y: auto !important;
+}
+
+/* Prevent main content from covering chatbot */
+.main-wrapper {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure chatbot button is always above content */
+[class*="floatingButton"],
+[class*="floating_floatingButton"] {
+  position: fixed !important;
+  z-index: 9999 !important;
 }

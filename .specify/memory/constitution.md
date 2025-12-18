@@ -1,14 +1,21 @@
 <!--
 SYNC IMPACT REPORT
 ==================
-Version change: 0.0.0 → 1.0.0
-Principles defined: 4 core academic principles
-Sections added: Core Principles, Academic Standards, Technical Standards, Development Workflow, Governance
+Version change: 1.0.0 → 1.1.0
+Principles modified: None (core principles retained)
+Sections added:
+  - RAG Chatbot Integration Standards (new major section)
+  - Interactive Learning Standards (new subsection in Academic Standards)
+  - AI-Native Architecture Standards (new subsection in Technical Standards)
 Templates requiring updates:
-  ✅ plan-template.md (Constitution Check section will reference these principles)
-  ✅ spec-template.md (Requirements align with academic rigor)
-  ✅ tasks-template.md (Quality gates align with verification standards)
-Follow-up TODOs: None
+  ✅ plan-template.md (Constitution Check section references updated principles - already aligned)
+  ✅ spec-template.md (Requirements align with academic rigor - already aligned)
+  ✅ tasks-template.md (Quality gates align with verification standards - already aligned)
+  ⚠ New templates may be needed for RAG chatbot feature specifications
+Follow-up TODOs:
+  - Consider creating RAG-specific testing checklist template
+  - Consider ADR for RAG architecture choices (Qdrant, OpenAI, FastAPI stack)
+Version bump rationale: MINOR version bump - New section added (RAG Chatbot Integration Standards) with materially expanded guidance for AI-native interactive features, but no backward-incompatible changes to existing principles.
 -->
 
 # AI-Native Book Creation Constitution
@@ -26,8 +33,9 @@ All claims, examples, code snippets, and technical assertions MUST be verified a
 - Technical specifications MUST reference official documentation or peer-reviewed literature
 - AI-generated content MUST be validated by human review against authoritative sources
 - When sources conflict, multiple sources MUST be consulted and conflicts documented
+- RAG chatbot responses MUST be grounded in book content and traceable to source text
 
-**Rationale:** Academic and professional credibility depends on factual accuracy. Readers rely on this book for learning; inaccuracies undermine trust and pedagogical value.
+**Rationale:** Academic and professional credibility depends on factual accuracy. Readers rely on this book for learning; inaccuracies undermine trust and pedagogical value. RAG integration ensures all AI-generated responses are verifiable against source material.
 
 ### II. Clarity (NON-NEGOTIABLE)
 
@@ -40,8 +48,9 @@ Writing MUST be accessible to an academic audience with a computer science backg
 - Jargon MUST be explained or linked to glossary definitions
 - Complex topics MUST be scaffolded from foundational concepts to advanced applications
 - Visual aids (diagrams, flowcharts, code listings) MUST supplement textual explanations where appropriate
+- Interactive chatbot responses MUST maintain the same clarity standards as static content
 
-**Rationale:** Clarity ensures knowledge transfer. Even expert audiences benefit from well-structured, unambiguous technical writing that reduces cognitive load and maximizes comprehension.
+**Rationale:** Clarity ensures knowledge transfer. Even expert audiences benefit from well-structured, unambiguous technical writing that reduces cognitive load and maximizes comprehension. Interactive AI assistance extends this clarity to dynamic user queries.
 
 ### III. Reproducibility (NON-NEGOTIABLE)
 
@@ -63,8 +72,13 @@ Any methodology, code snippet, AI experiment, or technical process described MUS
   - Decision points and alternatives
   - Success criteria for each step
   - Troubleshooting common issues
+- RAG system implementations MUST document:
+  - Embedding model versions and parameters
+  - Chunking strategies and chunk sizes
+  - Retrieval parameters (top-k, similarity thresholds)
+  - Query logging and reproducibility mechanisms
 
-**Rationale:** Reproducibility is fundamental to scientific and engineering practice. Readers must be able to validate claims and build upon documented techniques.
+**Rationale:** Reproducibility is fundamental to scientific and engineering practice. Readers must be able to validate claims and build upon documented techniques. RAG systems require reproducibility to enable verification and debugging.
 
 ### IV. Rigor
 
@@ -82,8 +96,9 @@ Sources MUST be peer-reviewed where possible, and speculative claims MUST be cle
   - "Preliminary results indicate..."
 - Opinion-based content MUST be clearly distinguished from factual assertions
 - Emerging technologies MUST acknowledge uncertainty and rapid evolution
+- RAG chatbot responses MUST NOT introduce speculation beyond source material
 
-**Rationale:** Academic rigor ensures intellectual honesty and helps readers distinguish established knowledge from emerging practices and speculation.
+**Rationale:** Academic rigor ensures intellectual honesty and helps readers distinguish established knowledge from emerging practices and speculation. RAG systems preserve rigor by grounding all responses in verified source content.
 
 ## Academic Standards
 
@@ -134,6 +149,21 @@ Sources MUST be peer-reviewed where possible, and speculative claims MUST be cle
 - Failures and limitations MUST be documented alongside successes
 - Prompt engineering techniques MUST be validated across multiple use cases
 
+### Interactive Learning Standards
+
+**RAG Chatbot Quality Assurance:**
+- All chatbot responses MUST be grounded in book content with source references
+- Retrieved context MUST be semantically relevant to user queries
+- Responses MUST maintain academic tone and accuracy standards
+- Hallucination detection mechanisms MUST be in place and monitored
+- User queries and responses MUST be logged for quality review
+
+**Evaluation Metrics:**
+- **Accuracy**: Percentage of answers correctly grounded in book content (target: >95%)
+- **Latency**: Response time from query submission to generation (target: <3 seconds p95)
+- **User Satisfaction**: Qualitative feedback on answer clarity and relevance (tracked via optional feedback)
+- **Traceability**: All responses MUST include source references to verify against original text
+
 ## Technical Standards
 
 ### Technology Stack
@@ -149,6 +179,60 @@ Sources MUST be peer-reviewed where possible, and speculative claims MUST be cle
 - Link checking for citation and reference validity
 - Code syntax validation for all embedded code
 - Spell checking and grammar validation
+
+### AI-Native Architecture Standards
+
+**RAG Chatbot Technology Stack:**
+- **Frontend Integration:** Embedded within Docusaurus interface
+  - User interaction layer for highlighting text and submitting queries
+  - Real-time response display with source references
+- **Vector Database:** Qdrant Cloud Free Tier
+  - Stores and indexes book content as embeddings
+  - Semantic similarity search for context retrieval
+- **Embedding Model:** OpenAI embedding models
+  - Text chunking strategy: ~500 words per chunk with overlap
+  - Embedding dimension and model version MUST be documented
+- **Generation Layer:** OpenAI Agents / ChatKit SDKs
+  - Context-aware response generation
+  - Grounding mechanism to prevent hallucination
+- **Backend API:** FastAPI
+  - Query handling and orchestration
+  - Retrieval call management to Qdrant
+  - Context forwarding to AI agent
+  - Interaction logging for reproducibility
+- **Database Layer:** Neon Serverless Postgres
+  - Query storage and metadata
+  - User interaction logs
+  - Analytics on usage patterns and performance
+  - Answer verification data
+
+**Implementation Workflow:**
+1. **Preprocessing and Embedding Generation:**
+   - Segment book text into manageable chunks (~500 words each)
+   - Convert chunks to embeddings using OpenAI embedding model
+   - Upload chunks and embeddings to Qdrant with metadata
+2. **Query Handling:**
+   - Receive user queries via frontend
+   - Convert query to embedding (same model as content)
+   - Retrieve top-N relevant chunks from Qdrant
+3. **Answer Generation:**
+   - Pass retrieved chunks to OpenAI Agent
+   - Generate response strictly based on retrieved content
+   - Include source references for traceability
+4. **Logging and Reproducibility:**
+   - Store query, retrieved context, and generated response in Neon Postgres
+   - Enable debugging and verification against book text
+
+**RAG Quality Gates:**
+- [ ] All book content properly chunked and embedded
+- [ ] Embedding model version documented and locked
+- [ ] Retrieval returns semantically relevant chunks (verified through test queries)
+- [ ] Generated responses reference source chunks accurately
+- [ ] No hallucination detected in sample testing (100+ test queries)
+- [ ] All queries and responses logged with timestamps
+- [ ] Source traceability functional (can map response to exact book location)
+- [ ] Latency targets met (<3s p95)
+- [ ] Error handling in place for retrieval failures and generation errors
 
 ### File Organization
 
@@ -172,6 +256,17 @@ history/               # Development history (PHRs, ADRs)
 │   ├── <feature>/
 │   └── general/
 └── adr/
+
+backend/               # RAG chatbot backend (if applicable)
+├── src/
+│   ├── api/          # FastAPI endpoints
+│   ├── services/     # Business logic (embedding, retrieval, generation)
+│   ├── models/       # Data models
+│   └── config/       # Configuration management
+└── tests/
+    ├── contract/     # API contract tests
+    ├── integration/  # End-to-end RAG workflow tests
+    └── unit/         # Unit tests for services
 ```
 
 **Naming Conventions:**
@@ -192,6 +287,73 @@ history/               # Development history (PHRs, ADRs)
 - Include language tag: ```python, ```javascript, etc.
 - Add comments for complex logic
 - Follow language-specific style guides (PEP 8 for Python, etc.)
+
+## RAG Chatbot Integration Standards
+
+### Retrieval Quality
+
+**Chunking Strategy:**
+- Chunk size: ~500 words with 50-word overlap to preserve context boundaries
+- Chunks MUST respect semantic boundaries (paragraphs, sections)
+- Metadata MUST include: chapter, section, subsection, page number (if applicable)
+- Code blocks MUST be kept intact within chunks where possible
+
+**Embedding Quality:**
+- Use consistent embedding model across all content
+- Document model version and parameters
+- Validate embedding quality with test queries (semantic similarity checks)
+- Re-embed content if model is upgraded
+
+**Retrieval Parameters:**
+- Top-k retrieval: Start with k=5, tune based on response quality
+- Similarity threshold: Document minimum threshold for relevance
+- Contextual re-ranking: Consider implementing if initial retrieval quality insufficient
+
+### Generation Quality
+
+**Grounding Mechanism:**
+- Agent MUST be instructed to answer ONLY from retrieved context
+- Responses MUST include source references (chapter, section, or chunk ID)
+- If context insufficient, agent MUST respond with: "I don't have enough information in the retrieved sections to answer this question accurately."
+- NO speculation or general knowledge beyond source material
+
+**Response Format:**
+- Clear, concise answer based on retrieved text
+- APA-style citations or internal references to source location
+- Optional: Direct quotes from source material
+- Explicit statement if question is partially answered due to insufficient context
+
+**Safety and Accuracy:**
+- Implement content filtering to prevent inappropriate queries
+- Log all generation failures for review
+- Monitor for hallucination patterns
+- Regular audits of randomly sampled query-response pairs
+
+### Logging and Reproducibility
+
+**Query Logging Schema:**
+- Timestamp (ISO 8601 format)
+- User query (full text)
+- Query embedding vector
+- Retrieved chunks (IDs and similarity scores)
+- Generated response (full text)
+- Source references included in response
+- User feedback (if provided)
+- Response latency (milliseconds)
+
+**Reproducibility Requirements:**
+- All queries MUST be reproducible from logs
+- Embedding model version MUST be logged
+- Retrieval parameters MUST be logged
+- Generation model and parameters MUST be logged
+- Database schema MUST support historical query replay
+
+**Analytics and Monitoring:**
+- Track query volume over time
+- Identify most common query topics
+- Monitor retrieval quality (average similarity scores)
+- Monitor generation latency (p50, p95, p99)
+- Track user satisfaction (if feedback mechanism present)
 
 ## Development Workflow
 
@@ -231,6 +393,31 @@ history/               # Development history (PHRs, ADRs)
    - Review rendered output
    - Deploy to GitHub Pages
 
+**RAG Integration Workflow:**
+1. **Preprocessing:**
+   - Segment new/updated content into chunks
+   - Generate embeddings
+   - Upload to Qdrant with metadata
+   - Verify retrieval quality with test queries
+
+2. **Testing:**
+   - Create test query set covering key topics
+   - Validate retrieval returns relevant chunks
+   - Validate generated responses are accurate and grounded
+   - Check source references are correct
+
+3. **Deployment:**
+   - Deploy backend API updates
+   - Update frontend integration if needed
+   - Monitor initial query performance
+   - Review logs for issues
+
+4. **Monitoring:**
+   - Regular review of query logs
+   - Identify and address failure cases
+   - Update retrieval parameters if needed
+   - Re-embed content if embedding model upgraded
+
 ### Quality Gates
 
 **Pre-Commit Checks:**
@@ -248,6 +435,15 @@ history/               # Development history (PHRs, ADRs)
 - [ ] Speculative content clearly marked
 - [ ] Docusaurus build succeeds without errors
 
+**RAG Integration Checks:**
+- [ ] New content properly chunked and embedded
+- [ ] Test queries return semantically relevant chunks
+- [ ] Generated responses are accurate and grounded
+- [ ] Source references work correctly
+- [ ] No hallucination in test query set
+- [ ] Latency targets met
+- [ ] Logging functional and complete
+
 ### Prompt History Records (PHRs)
 
 **When to Create PHRs:**
@@ -255,16 +451,17 @@ history/               # Development history (PHRs, ADRs)
 - When making architectural decisions about book structure
 - When resolving technical challenges in examples
 - When clarifying complex topics or methodologies
+- After implementing RAG chatbot features or updates
 
 **PHR Routing:**
 - Constitution-related: `history/prompts/constitution/`
-- Feature-specific (chapters, appendices): `history/prompts/<feature-name>/`
+- Feature-specific (chapters, appendices, RAG chatbot): `history/prompts/<feature-name>/`
 - General development: `history/prompts/general/`
 
 **PHR Content Requirements:**
 - Full user prompt (verbatim, not truncated)
 - Key assistant response or summary
-- Stage identifier (spec, plan, tasks, red, green, refactor, explainer, misc, general)
+- Stage identifier (spec, plan, tasks, red, green, refactor, explainer, misc, general, constitution)
 - Links to related artifacts (specs, ADRs, PRs)
 
 ### Architectural Decision Records (ADRs)
@@ -282,6 +479,10 @@ An ADR MUST be created when ALL three conditions are met:
 - Citation management approach
 - Code example validation methodology
 - AI experiment documentation format
+- RAG architecture choices (Qdrant vs. alternatives, OpenAI vs. open-source models)
+- Embedding model selection
+- Chunking strategy for book content
+- Backend framework selection (FastAPI vs. alternatives)
 
 **ADR Suggestion Format:**
 ```
@@ -316,18 +517,19 @@ This constitution supersedes all other development practices and documentation s
 - Monthly audits of source distribution (50% peer-reviewed requirement)
 - Quarterly reviews of reproducibility (test code examples)
 - Annual full constitution compliance audit
+- RAG chatbot quality audits (monthly review of query logs and response accuracy)
 
 **Violation Handling:**
-- Critical violations (accuracy, reproducibility) MUST be fixed before publication
+- Critical violations (accuracy, reproducibility, RAG grounding failures) MUST be fixed before publication
 - Minor violations (formatting, citation style) SHOULD be fixed in next revision
 - Complexity violations MUST be justified in writing
 
 ### Complexity Justification
 
-When deviating from simplicity principles (e.g., introducing complex technical explanations), justification MUST include:
+When deviating from simplicity principles (e.g., introducing complex technical explanations or architectures), justification MUST include:
 - Why the complexity is necessary
 - What simpler alternatives were considered
 - Why simpler alternatives were insufficient
 - How the complexity serves the reader's learning goals
 
-**Version**: 1.0.0 | **Ratified**: 2025-12-05 | **Last Amended**: 2025-12-05
+**Version**: 1.1.0 | **Ratified**: 2025-12-05 | **Last Amended**: 2025-12-11

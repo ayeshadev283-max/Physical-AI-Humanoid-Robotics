@@ -1,0 +1,154 @@
+/**
+ * TopicsTable styles
+ */
+
+.container {
+  background: var(--ifm-card-background-color, #fff);
+  border: 1px solid var(--ifm-color-emphasis-200);
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.875rem;
+}
+
+.table thead {
+  background: var(--ifm-color-emphasis-100);
+  border-bottom: 2px solid var(--ifm-color-emphasis-300);
+}
+
+.table th {
+  padding: 0.75rem 1rem;
+  text-align: left;
+  font-weight: 600;
+  color: var(--ifm-color-emphasis-800);
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+}
+
+.table td {
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--ifm-color-emphasis-200);
+}
+
+.table tbody tr:last-child td {
+  border-bottom: none;
+}
+
+.table tbody tr:hover {
+  background: var(--ifm-color-emphasis-100);
+}
+
+/* Column styles */
+.rankColumn {
+  width: 60px;
+  text-align: center;
+  color: var(--ifm-color-emphasis-600);
+  font-weight: 600;
+}
+
+.topicColumn {
+  width: auto;
+  min-width: 200px;
+}
+
+.countColumn {
+  width: 100px;
+  text-align: center;
+}
+
+.percentColumn {
+  width: 80px;
+  text-align: right;
+}
+
+/* Sortable headers */
+.sortable {
+  cursor: pointer;
+  user-select: none;
+  transition: background 0.2s ease;
+}
+
+.sortable:hover {
+  background: var(--ifm-color-emphasis-200);
+}
+
+/* Content styles */
+.topicText {
+  font-weight: 500;
+  color: var(--ifm-color-emphasis-900);
+}
+
+.countBadge {
+  display: inline-block;
+  padding: 0.25rem 0.75rem;
+  background: var(--ifm-color-primary-lighter);
+  color: var(--ifm-color-primary-darker);
+  border-radius: 12px;
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+
+.percentText {
+  color: var(--ifm-color-emphasis-700);
+  font-weight: 500;
+}
+
+/* Empty state */
+.emptyState {
+  padding: 3rem 2rem;
+  text-align: center;
+  color: var(--ifm-color-emphasis-600);
+}
+
+.emptyState p {
+  margin: 0;
+  font-size: 0.875rem;
+}
+
+/* Dark mode */
+[data-theme='dark'] .container {
+  background: var(--ifm-card-background-color);
+  border-color: var(--ifm-color-emphasis-300);
+}
+
+[data-theme='dark'] .table thead {
+  background: var(--ifm-color-emphasis-200);
+}
+
+[data-theme='dark'] .countBadge {
+  background: var(--ifm-color-primary-dark);
+  color: var(--ifm-color-primary-lightest);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .table {
+    font-size: 0.8125rem;
+  }
+
+  .table th,
+  .table td {
+    padding: 0.5rem 0.75rem;
+  }
+
+  .rankColumn {
+    width: 40px;
+  }
+
+  .countColumn {
+    width: 80px;
+  }
+
+  .percentColumn {
+    width: 60px;
+  }
+
+  .topicColumn {
+    min-width: 150px;
+  }
+}

@@ -1,0 +1,590 @@
+openapi: 3.1.0
+info:
+  title: RAG Chatbot API for Educational Resources
+  version: 1.0.0
+  description: |
+    REST API for the Retrieval-Augmented Generation (RAG) chatbot system embedded in educational books.
+
+    This API enables students to submit natural language queries about book content and receive
+    accurate, source-grounded answers. All responses include citations to enable verification.
+
+    **Key Features:**
+    - Semantic search across book content using vector embeddings
+    - Grounded response generation (no hallucination)
+    - Source references in all answers
+    - User feedback collection
+    - Analytics and ROI metrics
+
+    **Performance Targets:**
+    - p95 latency < 3 seconds
+    - 200 concurrent users supported
+    - >95% response accuracy
+  contact:
+    name: API Support
+    email: support@example.com
+  license:
+    name: Apache 2.0
+    url: https://www.apache.org/licenses/LICENSE-2.0.html
+
+servers:
+  - url: https://api.rag-chatbot.example.com/v1
+    description: Production server
+  - url: https://staging-api.rag-chatbot.example.com/v1
+    description: Staging server
+  - url: http://localhost:8000/v1
+    description: Local development server
+
+tags:
+  - name: query
+    description: Query processing and response generation
+  - name: feedback
+    description: User feedback collection
+  - name: analytics
+    description: Usage metrics and ROI analytics
+  - name: health
+    description: System health and status
+
+paths:
+  /query:
+    post:
+      summary: Submit a query and receive AI-generated answer
+      description: |
+        Processes a user's natural language question about book content and returns
+        an accurate, source-grounded answer with citations.
+
+        **Workflow:**
+        1. Convert query to embedding vector
+        2. Retrieve top-N relevant book chunks from vector database
+        3. Generate response using AI model with retrieved context
+        4. Return answer with source references
+
+        **Latency:** Typically 1-3 seconds (p95 < 3s)
+      operationId: submitQuery
+      tags:
+        - query
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/QueryRequest'
+            examples:
+              basicQuery:
+                summary: Basic question without text selection
+                value:
+                  query: "How much do test scores improve with ITS?"
+                  book_context:
+                    book_id: "physical-ai-robotics"
+                    chapter_number: 2
+              contextualQuery:
+                summary: Question with highlighted text
+                value:
+                  query: "Why does this improve student outcomes?"
+                  selected_text: "students using ITS achieved 10–15% higher test scores"
+                  book_context:
+                    book_id: "physical-ai-robotics"
+                    chapter_number: 2
+                    page_url: "/docs/chapters/02-key-ai-applications"
+      responses:
+        '200':
+          description: Successful query processing
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/QueryResponse'
+              examples:
+                successfulResponse:
+                  summary: Grounded answer with citations
+                  value:
+                    query_id: "7f3d5e2a-1b4c-4f8e-9a3d-6c8b2e4a9f1d"
+                    response_text: "Students using Intelligent Tutoring Systems (ITS) achieved 10-15% higher test scores according to research by Pane et al. (2017). The study found that ITS provides personalized instruction based on student learning patterns, which significantly reduces the need for one-on-one teacher intervention while improving mastery in subjects like mathematics and science."
+                    source_references:
+                      - chapter: "2"
+                        section: "2.1 Intelligent Tutoring Systems (ITS)"
+                        citation: "Chapter 2, Section 2.1"
+                        chunk_id: "550e8400-e29b-41d4-a716-446655440000"
+                    confidence_score: 0.85
+                    latency_ms: 1847
+                    timestamp: "2025-12-11T14:25:33Z"
+                insufficientContext:
+                  summary: Query with insufficient book content
+                  value:
+                    query_id: "8g4e6f3b-2c5d-5g9f-0b4e-7d9c3f5b0g2e"
+                    response_text: "I don't have enough information in the retrieved sections to answer this question accurately. Could you try rephrasing or asking about a topic covered in the table of contents?"
+                    source_references: []
+                    confidence_score: 0.12
+                    latency_ms: 982
+                    timestamp: "2025-12-11T14:30:15Z"
+        '400':
+          description: Invalid request (malformed query, missing required fields)
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "Invalid request"
+                message: "Query text must be between 1 and 500 characters"
+                code: "INVALID_QUERY_LENGTH"
+        '429':
+          description: Rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "Rate limit exceeded"
+                message: "Maximum 60 queries per hour exceeded. Please try again later."
+                code: "RATE_LIMIT_EXCEEDED"
+        '500':
+          description: Internal server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+              example:
+                error: "Internal server error"
+                message: "Failed to process query due to temporary service unavailability"
+                code: "SERVICE_UNAVAILABLE"
+
+  /feedback:
+    post:
+      summary: Submit user feedback on a response
+      description: |
+        Allows users to rate chatbot responses as "helpful" or "not helpful"
+        with optional comments. Feedback is used to improve content and
+        identify low-quality responses.
+      operationId: submitFeedback
+      tags:
+        - feedback
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/FeedbackRequest'
+            example:
+              response_id: "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7"
+              rating: "helpful"
+              comment: "This answer was very clear and included the exact citation I needed!"
+      responses:
+        '201':
+          description: Feedback successfully recorded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/FeedbackResponse'
+              example:
+                feedback_id: "c3d4e5f6-g7h8-9i0j-1k2l-m3n4o5p6q7r8"
+                message: "Thank you for your feedback!"
+                timestamp: "2025-12-11T14:26:15Z"
+        '400':
+          description: Invalid request
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '404':
+          description: Response ID not found
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+        '409':
+          description: Feedback already submitted for this response
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /analytics/summary:
+    get:
+      summary: Get analytics summary for specified time period
+      description: |
+        Returns aggregated metrics including:
+        - Total queries handled
+        - Average response time (p50, p95, p99)
+        - Accuracy rate (based on user ratings)
+        - Teacher time saved estimate
+        - Top question topics
+      operationId: getAnalyticsSummary
+      tags:
+        - analytics
+      parameters:
+        - name: start_date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: Start date for analytics period (ISO 8601 format YYYY-MM-DD)
+          example: "2025-12-01"
+        - name: end_date
+          in: query
+          required: true
+          schema:
+            type: string
+            format: date
+          description: End date for analytics period (ISO 8601 format YYYY-MM-DD)
+          example: "2025-12-31"
+        - name: book_id
+          in: query
+          required: false
+          schema:
+            type: string
+          description: Filter metrics by specific book (optional)
+          example: "physical-ai-robotics"
+      responses:
+        '200':
+          description: Analytics summary successfully retrieved
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/AnalyticsSummary'
+              example:
+                period:
+                  start: "2025-12-01"
+                  end: "2025-12-31"
+                total_queries: 24573
+                unique_users: 1247
+                average_latency:
+                  p50: 1523
+                  p95: 2847
+                  p99: 3456
+                accuracy_rate: 0.96
+                feedback_rate: 0.42
+                teacher_time_saved_hours: 1023.88
+                top_topics:
+                  - topic: "Intelligent Tutoring Systems"
+                    count: 3456
+                  - topic: "Adaptive Feedback Mechanisms"
+                    count: 2891
+                  - topic: "Knowledge Retrieval Systems"
+                    count: 2134
+        '400':
+          description: Invalid date range or parameters
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Error'
+
+  /health:
+    get:
+      summary: Check API health status
+      description: Returns system health information including service availability
+      operationId: getHealth
+      tags:
+        - health
+      responses:
+        '200':
+          description: System is healthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+              example:
+                status: "healthy"
+                timestamp: "2025-12-11T14:30:00Z"
+                services:
+                  database: "healthy"
+                  vector_db: "healthy"
+                  openai_api: "healthy"
+                version: "1.0.0"
+        '503':
+          description: System is unhealthy
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/HealthStatus'
+              example:
+                status: "unhealthy"
+                timestamp: "2025-12-11T14:30:00Z"
+                services:
+                  database: "healthy"
+                  vector_db: "degraded"
+                  openai_api: "unhealthy"
+                version: "1.0.0"
+
+components:
+  schemas:
+    QueryRequest:
+      type: object
+      required:
+        - query
+        - book_context
+      properties:
+        query:
+          type: string
+          minLength: 1
+          maxLength: 500
+          description: User's natural language question
+          example: "How much do test scores improve with ITS?"
+        selected_text:
+          type: string
+          nullable: true
+          maxLength: 1000
+          description: Text highlighted by user (optional, for contextual queries)
+          example: "students using ITS achieved 10–15% higher test scores"
+        book_context:
+          type: object
+          required:
+            - book_id
+          properties:
+            book_id:
+              type: string
+              description: Identifier for the book
+              example: "physical-ai-robotics"
+            chapter_number:
+              type: integer
+              nullable: true
+              description: Current chapter (optional, for scoped retrieval)
+              example: 2
+            page_url:
+              type: string
+              nullable: true
+              description: URL of page where query was submitted
+              example: "/docs/chapters/02-key-ai-applications"
+
+    QueryResponse:
+      type: object
+      required:
+        - query_id
+        - response_text
+        - source_references
+        - latency_ms
+        - timestamp
+      properties:
+        query_id:
+          type: string
+          format: uuid
+          description: Unique identifier for this query
+          example: "7f3d5e2a-1b4c-4f8e-9a3d-6c8b2e4a9f1d"
+        response_text:
+          type: string
+          minLength: 50
+          maxLength: 2000
+          description: AI-generated answer grounded in book content
+          example: "Students using Intelligent Tutoring Systems (ITS) achieved 10-15% higher test scores..."
+        source_references:
+          type: array
+          items:
+            $ref: '#/components/schemas/SourceReference'
+          description: Citations and sources for the response
+        confidence_score:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 1.0
+          nullable: true
+          description: Internal confidence estimate based on retrieval quality
+          example: 0.85
+        latency_ms:
+          type: integer
+          description: Response generation time in milliseconds
+          example: 1847
+        timestamp:
+          type: string
+          format: date-time
+          description: Response generation timestamp (ISO 8601)
+          example: "2025-12-11T14:25:33Z"
+
+    SourceReference:
+      type: object
+      required:
+        - chapter
+        - citation
+        - chunk_id
+      properties:
+        chapter:
+          type: string
+          description: Chapter number or identifier
+          example: "2"
+        section:
+          type: string
+          nullable: true
+          description: Section heading
+          example: "2.1 Intelligent Tutoring Systems (ITS)"
+        citation:
+          type: string
+          description: Human-readable citation text
+          example: "Chapter 2, Section 2.1"
+        chunk_id:
+          type: string
+          format: uuid
+          description: Internal chunk identifier for debugging
+          example: "550e8400-e29b-41d4-a716-446655440000"
+
+    FeedbackRequest:
+      type: object
+      required:
+        - response_id
+        - rating
+      properties:
+        response_id:
+          type: string
+          format: uuid
+          description: ID of the response being rated
+          example: "b2c3d4e5-f6g7-8h9i-0j1k-l2m3n4o5p6q7"
+        rating:
+          type: string
+          enum: [helpful, not_helpful]
+          description: User's rating of the response
+          example: "helpful"
+        comment:
+          type: string
+          nullable: true
+          maxLength: 500
+          description: Optional feedback comment
+          example: "This answer was very clear and included the exact citation I needed!"
+
+    FeedbackResponse:
+      type: object
+      required:
+        - feedback_id
+        - message
+        - timestamp
+      properties:
+        feedback_id:
+          type: string
+          format: uuid
+          description: Unique identifier for this feedback
+          example: "c3d4e5f6-g7h8-9i0j-1k2l-m3n4o5p6q7r8"
+        message:
+          type: string
+          description: Confirmation message
+          example: "Thank you for your feedback!"
+        timestamp:
+          type: string
+          format: date-time
+          description: Feedback submission timestamp (ISO 8601)
+          example: "2025-12-11T14:26:15Z"
+
+    AnalyticsSummary:
+      type: object
+      required:
+        - period
+        - total_queries
+        - unique_users
+        - average_latency
+        - accuracy_rate
+        - teacher_time_saved_hours
+      properties:
+        period:
+          type: object
+          properties:
+            start:
+              type: string
+              format: date
+            end:
+              type: string
+              format: date
+        total_queries:
+          type: integer
+          description: Total number of queries in period
+        unique_users:
+          type: integer
+          description: Number of unique users who submitted queries
+        average_latency:
+          type: object
+          properties:
+            p50:
+              type: integer
+              description: Median latency in milliseconds
+            p95:
+              type: integer
+              description: 95th percentile latency in milliseconds
+            p99:
+              type: integer
+              description: 99th percentile latency in milliseconds
+        accuracy_rate:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 1.0
+          description: Percentage of helpful ratings (if feedback provided)
+        feedback_rate:
+          type: number
+          format: float
+          minimum: 0.0
+          maximum: 1.0
+          description: Percentage of responses that received feedback
+        teacher_time_saved_hours:
+          type: number
+          format: float
+          description: Estimated teacher hours saved (queries × 2.5 minutes)
+        top_topics:
+          type: array
+          items:
+            type: object
+            properties:
+              topic:
+                type: string
+              count:
+                type: integer
+
+    HealthStatus:
+      type: object
+      required:
+        - status
+        - timestamp
+        - services
+        - version
+      properties:
+        status:
+          type: string
+          enum: [healthy, degraded, unhealthy]
+          description: Overall system status
+        timestamp:
+          type: string
+          format: date-time
+          description: Health check timestamp
+        services:
+          type: object
+          properties:
+            database:
+              type: string
+              enum: [healthy, degraded, unhealthy]
+            vector_db:
+              type: string
+              enum: [healthy, degraded, unhealthy]
+            openai_api:
+              type: string
+              enum: [healthy, degraded, unhealthy]
+        version:
+          type: string
+          description: API version
+          example: "1.0.0"
+
+    Error:
+      type: object
+      required:
+        - error
+        - message
+        - code
+      properties:
+        error:
+          type: string
+          description: Error category
+          example: "Invalid request"
+        message:
+          type: string
+          description: Human-readable error message
+          example: "Query text must be between 1 and 500 characters"
+        code:
+          type: string
+          description: Machine-readable error code
+          example: "INVALID_QUERY_LENGTH"
+        details:
+          type: object
+          nullable: true
+          description: Additional error context (optional)
+
+security:
+  - apiKey: []
+
+components:
+  securitySchemes:
+    apiKey:
+      type: apiKey
+      in: header
+      name: X-API-Key
+      description: API key for authentication (if enabled)

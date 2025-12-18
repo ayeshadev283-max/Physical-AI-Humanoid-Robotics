@@ -4,6 +4,7 @@ title: "Chapter 3: Sensing and Perception"
 description: Sensor modalities, fusion, and perception-action loops
 tags: [sensors, perception, sensor-fusion, proprioception]
 ---
+nimport { ChatbotWidget } from '@site/src/components/ChatbotWidget';
 
 # Chapter 3: Sensing and Perception
 
@@ -253,3 +254,18 @@ graph LR
 
 **Exercise 3.3**: Give three examples of "active perception" in everyday human activities (beyond the examples in this chapter). For each, explain how action improves sensing and what would be lost if the system were purely passive.
 
+
+---
+
+## Ask Questions About This Chapter
+
+Have questions about the content? Use our AI-powered chatbot to get instant answers based on the book material:
+
+<ChatbotWidget 
+  bookId="physical-ai-robotics" 
+  chapterNumber={0} 
+/>
+
+:::tip
+The chatbot provides answers grounded in the book content with source references. Try asking questions about the concepts covered in this chapter.
+:::

@@ -208,3 +208,10 @@ Wait for consent; never auto-create ADRs. Group related decisions (stacks, authe
 
 ## Code Standards
 See `.specify/memory/constitution.md` for code quality, testing, performance, security, and architecture principles.
+
+## Active Technologies
+- Python 3.11+ (for backend API, embedding pipeline, and chatbot logic) (002-rag-chatbot-education)
+- TypeScript 4.9+ (React 17+ via Docusaurus 2.x) (003-chatkit)
+
+## Recent Changes
+- 002-rag-chatbot-education: Added Python 3.11+ (for backend API, embedding pipeline, and chatbot logic)

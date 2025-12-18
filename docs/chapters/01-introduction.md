@@ -522,3 +522,12 @@ Stasse, O., Flayols, T., Budhiraja, R., Giraud-Esclasse, K., Carpentier, J., Del
 Thrun, S., Burgard, W., & Fox, D. (2005). *Probabilistic robotics*. MIT Press.
 
 Tobin, J., Fong, R., Ray, A., Schneider, J., Zaremba, W., & Abbeel, P. (2017). Domain randomization for transferring deep neural networks from simulation to the real world. *IEEE/RSJ International Conference on Intelligent Robots and Systems*, 23-30. https://doi.org/10.1109/IROS.2017.8202133
+
+---
+
+:::tip
+The chatbot provides answers grounded in the book content with source references. Try asking questions like:
+- "What is Moravec's paradox?"
+- "How does embodied cognition differ from traditional AI?"
+- "What are the main challenges in physical AI?"
+:::
