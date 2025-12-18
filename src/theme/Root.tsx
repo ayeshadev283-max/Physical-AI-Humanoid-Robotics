@@ -1,13 +1,8 @@
 import React from 'react';
-import ChatbotWidget from '../components/Chatbot/ChatbotWidget';
-import TextSelectionHandler from '../components/TextSelection/TextSelectionHandler';
+
+// TODO: Re-enable chatbot once SSR issues are resolved
+// Temporarily disabled to allow build to succeed
 
 export default function Root({ children }): JSX.Element {
-  return (
-    <>
-      {children}
-      <TextSelectionHandler />
-      <ChatbotWidget />
-    </>
-  );
+  return <>{children}</>;
 }

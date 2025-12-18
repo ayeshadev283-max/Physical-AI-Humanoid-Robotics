@@ -4,7 +4,7 @@ title: "Chapter 3: Sensing and Perception"
 description: Sensor modalities, fusion, and perception-action loops
 tags: [sensors, perception, sensor-fusion, proprioception]
 ---
-nimport { ChatbotWidget } from '@site/src/components/ChatbotWidget';
+<!-- import { ChatbotWidget } --> from '@site/src/components/ChatbotWidget';
 
 # Chapter 3: Sensing and Perception
 
@@ -84,21 +84,21 @@ nimport { ChatbotWidget } from '@site/src/components/ChatbotWidget';
 ```mermaid
 graph TB
     subgraph Sensors["Sensor Array"]
-        GPS[GPS<br/>Position<br/>Slow, Accurate]
-        IMU[IMU<br/>Acceleration<br/>Fast, Drifts]
-        Camera[Camera<br/>Visual Features<br/>Rich, Noisy]
-        Lidar[LiDAR<br/>3D Points<br/>Precise, Expensive]
+        GPS[GPS<br /> -->Position<br /> -->Slow, Accurate]
+        IMU[IMU<br /> -->Acceleration<br /> -->Fast, Drifts]
+        Camera[Camera<br /> -->Visual Features<br /> -->Rich, Noisy]
+        Lidar[LiDAR<br /> -->3D Points<br /> -->Precise, Expensive]
     end
 
     subgraph Fusion["Sensor Fusion (Kalman Filter)"]
-        Predict[Prediction Step<br/>Use IMU for fast update]
-        Update[Update Step<br/>Correct with GPS/Camera/LiDAR]
+        Predict[Prediction Step<br /> -->Use IMU for fast update]
+        Update[Update Step<br /> -->Correct with GPS/Camera/LiDAR]
         Predict --> Update
         Update --> Predict
     end
 
     subgraph Output["Fused Estimate"]
-        State[Robot State<br/>Position, Velocity, Orientation<br/>Fast + Accurate]
+        State[Robot State<br /> -->Position, Velocity, Orientation<br /> -->Fast + Accurate]
     end
 
     GPS --> Update
@@ -189,8 +189,8 @@ graph LR
 
     subgraph Robot["Robot System"]
         Sensors[Sensors]
-        Perception[Perception<br/>State Estimation]
-        Planning[Action Selection<br/>Planning/Control]
+        Perception[Perception<br /> -->State Estimation]
+        Planning[Action Selection<br /> -->Planning/Control]
         Actuators[Actuators]
     end
 
@@ -200,7 +200,7 @@ graph LR
     Planning -->|Commands| Actuators
     Actuators -->|Action| State
     
-    Planning -.->|Active Perception<br/>Move to improve sensing| Actuators
+    Planning -.->|Active Perception<br /> -->Move to improve sensing| Actuators
 
     style World fill:#fff4e1
     style Robot fill:#e1f5ff
@@ -261,10 +261,10 @@ graph LR
 
 Have questions about the content? Use our AI-powered chatbot to get instant answers based on the book material:
 
-<ChatbotWidget 
+<!-- <ChatbotWidget 
   bookId="physical-ai-robotics" 
   chapterNumber={0} 
-/>
+ /> -->
 
 :::tip
 The chatbot provides answers grounded in the book content with source references. Try asking questions about the concepts covered in this chapter.

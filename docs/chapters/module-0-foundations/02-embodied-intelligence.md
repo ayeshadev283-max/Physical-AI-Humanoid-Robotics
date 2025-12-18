@@ -4,7 +4,7 @@ title: "Chapter 2: Embodied Intelligence"
 description: How physical bodies enable and shape intelligence
 tags: [embodied-cognition, morphological-computation, developmental-robotics]
 ---
-nimport { ChatbotWidget } from '@site/src/components/ChatbotWidget';
+<!-- import { ChatbotWidget } --> from '@site/src/components/ChatbotWidget';
 
 # Chapter 2: Embodied Intelligence
 
@@ -37,9 +37,9 @@ graph LR
     end
 
     subgraph Embodied["Embodied AI"]
-        Body[Physical Body<br/>Morphology]
-        Brain[Control System<br/>Brain/Computer]
-        Env[Environment<br/>Physical World]
+        Body[Physical Body<br /> -->Morphology]
+        Brain[Control System<br /> -->Brain/Computer]
+        Env[Environment<br /> -->Physical World]
         
         Env -->|Sensory Input| Brain
         Brain -->|Motor Commands| Body
@@ -48,7 +48,7 @@ graph LR
         Body -->|Proprioception| Brain
     end
 
-    Traditional -.->|Cannot handle| RealWorld[Real-world<br/>Interaction]
+    Traditional -.->|Cannot handle| RealWorld[Real-world<br /> -->Interaction]
     Embodied -->|Enables| RealWorld
 
     style Traditional fill:#ffcccc
@@ -171,10 +171,10 @@ Embodiment is not optional—bodies shape intelligence.
 
 Have questions about the content? Use our AI-powered chatbot to get instant answers based on the book material:
 
-<ChatbotWidget 
+<!-- <ChatbotWidget 
   bookId="physical-ai-robotics" 
   chapterNumber={0} 
-/>
+ /> -->
 
 :::tip
 The chatbot provides answers grounded in the book content with source references. Try asking questions about the concepts covered in this chapter.

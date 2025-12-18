@@ -27,11 +27,11 @@ graph TB
     end
 
     subgraph Robot["Physical AI System"]
-        Sensors[Sensors<br/>Cameras, LiDAR, IMU, Tactile]
-        Perception[Perception<br/>Object detection, SLAM, State estimation]
-        Reasoning[Reasoning<br/>Planning, Decision-making, VLA]
-        Control[Control<br/>Motor control, Trajectory planning]
-        Actuators[Actuators<br/>Motors, Grippers, Joints]
+        Sensors[Sensors<br /> -->Cameras, LiDAR, IMU, Tactile]
+        Perception[Perception<br /> -->Object detection, SLAM, State estimation]
+        Reasoning[Reasoning<br /> -->Planning, Decision-making, VLA]
+        Control[Control<br /> -->Motor control, Trajectory planning]
+        Actuators[Actuators<br /> -->Motors, Grippers, Joints]
     end
 
     Environment -->|Light, Forces, State| Sensors
@@ -56,11 +56,11 @@ graph TB
     end
 
     subgraph Robot["Physical AI System"]
-        Sensors[Sensors<br/>Cameras, LiDAR, IMU, Tactile]
-        Perception[Perception<br/>Object detection, SLAM, State estimation]
-        Reasoning[Reasoning<br/>Planning, Decision-making, VLA]
-        Control[Control<br/>Motor control, Trajectory planning]
-        Actuators[Actuators<br/>Motors, Grippers, Joints]
+        Sensors[Sensors<br /> -->Cameras, LiDAR, IMU, Tactile]
+        Perception[Perception<br /> -->Object detection, SLAM, State estimation]
+        Reasoning[Reasoning<br /> -->Planning, Decision-making, VLA]
+        Control[Control<br /> -->Motor control, Trajectory planning]
+        Actuators[Actuators<br /> -->Motors, Grippers, Joints]
     end
 
     Environment -->|Light, Forces, State| Sensors
