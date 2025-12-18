@@ -97,7 +97,7 @@ const config = {
               },
               {
                 label: 'Bibliography',
-                to: '/references/bibliography',
+                to: '/docs/references/bibliography',
               },
             ],
           },
