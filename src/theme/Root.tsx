@@ -1,8 +1,31 @@
-import React from 'react';
-
-// TODO: Re-enable chatbot once SSR issues are resolved
-// Temporarily disabled to allow build to succeed
+import React, { useEffect, useState } from 'react';
 
 export default function Root({ children }): JSX.Element {
-  return <>{children}</>;
+  const [Components, setComponents] = useState<{
+    ChatbotWidget: React.ComponentType<any> | null;
+    TextSelectionHandler: React.ComponentType<any> | null;
+  }>({ ChatbotWidget: null, TextSelectionHandler: null });
+
+  useEffect(() => {
+    // Dynamically import components only on client side
+    Promise.all([
+      import('../components/Chatbot/ChatbotWidget'),
+      import('../components/TextSelection/TextSelectionHandler'),
+    ]).then(([chatbot, textSelection]) => {
+      setComponents({
+        ChatbotWidget: chatbot.default,
+        TextSelectionHandler: textSelection.default,
+      });
+    });
+  }, []);
+
+  const { ChatbotWidget, TextSelectionHandler } = Components;
+
+  return (
+    <>
+      {children}
+      {ChatbotWidget && <ChatbotWidget />}
+      {TextSelectionHandler && <TextSelectionHandler />}
+    </>
+  );
 }
